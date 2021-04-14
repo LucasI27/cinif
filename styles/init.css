@@ -1,0 +1,69 @@
+body{
+    font-family: Product Sans;
+    background-color: #131516;
+}
+
+.header{
+    position: fixed;
+    background-color:#131516;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-radius: 0vw 0vw 3vw 3vw;
+    box-shadow: 0px 1vw 5px rgb(80, 80, 80);
+}
+
+.logo{
+    height: 7vh;
+    width: auto;
+    margin: 2vh;
+}
+
+.titulo{
+    font-size: 10vw;
+    color: white;
+    font-weight: bold;
+    margin: 0vw;
+}
+
+.loginb{
+    border-radius: 3vw;
+    border: none;
+    height: 13vw;
+    width: 25vw;
+    font-size: 7vw;
+    font-family:Product Sans ;
+    background-color: #2AA064;
+    color: white;
+}
+
+.seta{
+    top: 36.2vw;
+    right: 18vw;
+    position: fixed;
+    width: 0vw; 
+    height: 0vw; 
+    border-left: 4vw solid transparent;
+    border-right: 4vw solid transparent;
+    border-bottom: 4vw solid #2AA064;
+}
+
+.balao{
+    text-align: center;
+    top: 40vw;
+    position: fixed;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #2AA064;
+    border-radius: 3vw;
+    color: white;
+    height: 45vw;
+    width: 94%;    
+}
+
+.balaot{
+    margin: 4vw;
+    position: relative;
+    font-size: 7vw;
+}
