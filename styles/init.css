@@ -3,44 +3,107 @@ body{
     background-color: #131516;
 }
 
-.header{
-    position: fixed;
-    background-color:#131516;
-    width: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    border-radius: 0vw 0vw 3vw 3vw;
-    box-shadow: 0px 1vw 5px rgb(80, 80, 80);
+@media (max-width: 720px) {   
+    .header{
+        background-color:#131516;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        border-radius: 0vw 0vw 3vw 3vw;
+        box-shadow: 0px 1vw 5px rgb(80, 80, 80);
+    }
 }
 
-.logo{
-    height: 7vh;
-    width: auto;
-    margin: 2vh;
+@media (min-width: 721px) {   
+    .header{
+        background-color:#131516;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        border-radius: 0vw 0vw 1.1vw 1.1vw;
+        box-shadow: 0px 0.3vw 5px rgb(80, 80, 80);
+    }
 }
 
-.titulo{
-    font-size: 10vw;
-    color: white;
-    font-weight: bold;
-    margin: 0vw;
+@media (max-width: 720px) {   
+    .logo{
+        height: 6vh;
+        width: auto;
+        margin: 2vh;
+    }
 }
 
-.loginb{
-    border-radius: 3vw;
-    border: none;
-    height: 13vw;
-    width: 25vw;
-    font-size: 7vw;
-    font-family:Product Sans ;
-    background-color: #2AA064;
-    color: white;
+@media (min-width: 721px) {   
+    .logo{
+        height: 10vh;
+        width: auto;
+        margin-left: 2vh;
+    }
+}
+
+@media (max-width: 720px) { 
+    .titulo{
+        font-size: 5vh;
+        color: rgb(199, 199, 199);
+        font-weight: bold;
+        margin: 0;
+    }
+}     
+    
+
+@media (min-width: 721px) {
+    .titulo{
+        font-size: 7vh;
+        color: rgb(199, 199, 199);
+        font-weight: bold;
+        margin: 3vh;
+    }
+}     
+
+@media (max-width: 720px) { 
+    .bord{
+        width: 25%;
+    }
+}
+
+@media (min-width: 721px) { 
+    .bord{
+        width: 8vh;
+        padding-right: 4vh;
+    }
+}
+
+@media (max-width: 720px){
+    .loginb{
+        border-radius: 3vw;
+        border: none;
+        height: 12vw;
+        width: 21vw;
+        font-size: 7vw;
+        font-family:Product Sans ;
+        background-color: #2AA064;
+        color: white;
+    }
+}
+
+@media (min-width: 721px){
+    .loginb{
+        border-radius: 1vw;
+        border: none;
+        height: 8vh;
+        width: 18vh;
+        font-size: 5vh;
+        font-family:Product Sans ;
+        background-color: #2AA064;
+        color: white;
+    }
 }
 
 .seta{
-    top: 36.2vw;
-    right: 18vw;
+    top: 13%;
+    right: 10vw;
     position: fixed;
     width: 0vw; 
     height: 0vw; 
@@ -49,17 +112,34 @@ body{
     border-bottom: 4vw solid #2AA064;
 }
 
-.balao{
-    text-align: center;
-    top: 40vw;
-    position: fixed;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #2AA064;
-    border-radius: 3vw;
-    color: white;
-    height: 45vw;
-    width: 94%;    
+@media (max-width: 720px){
+    .balao{
+        top: 14%;
+        position: fixed;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #2AA064;
+        border-radius: 3vw;
+        color: white;
+        height: 45vw;
+        width: 94%;    
+    }
+}
+
+@media (min-width: 721px){
+    .balao{
+        top: 19%;
+        position: fixed;
+        text-align: center;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #2AA064;
+        border-radius: 3vw;
+        color: white;
+        height: 45vw;
+        width: 97%;    
+    }
 }
 
 .balaot{
