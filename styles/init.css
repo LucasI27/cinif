@@ -12,23 +12,78 @@ body{
 
 .loginb:hover{
     background-color: #60c792;
-    transition: 0.75s;
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 1024px) {
+    
+    .flex{
+        display: flexbox;
+        width: 100%;
+        flex-direction: column;
+        position: fixed;
+        justify-content: center;
+        left: 0;
+        top: 0;
+    }
+
+    .header{
+        background-color:var(--bg);
+        width: 100%;
+        border-radius: 0vw 0vw 3vh 3vw;
+        box-shadow: 0px 1vw 5px rgb(80, 80, 80);
+    }
+
+    .logo{
+        height: 6vh;
+        width: auto;
+        margin: 2vh;
+    }
+    
+    .titulo{
+        font-size: 5vh;
+        color: rgb(199, 199, 199);
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .balao{
+        text-align: center;
+        background-color: var(--acc);
+        border-radius: 3vw;
+        color: white;
+        width: 94%;
+        margin: auto;
+    }
+
     .descd{
         display: none;
     }
+
     .descm{
         color: #C7C7C7;
-        font-size: 20px;
+        font-size: 5vw;
         text-align: center;
         margin: 4vh;
     }
-    .posm{
-        margin-top: 60vw;
-    }
+
     .bannerm{
         width: 100%;
         height: auto;
@@ -41,19 +96,8 @@ body{
         position: relative;
         font-size: 5vw;
     }
-    .balao{
-        top: max(22vw, 13%);
-        position: fixed;
-        text-align: center;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: var(--acc);
-        border-radius: 3vw;
-        color: white;
-        width: 94%;    
-    }
+    
     .seta{
-        top: max(20vw, 11.7%);
         right: 10vw;
         position: fixed;
         width: 0vw; 
@@ -72,32 +116,28 @@ body{
         background-color: var(--acc);
         color: white;
         cursor: pointer;
+        transition: background-color .75s;
     }
     .bord{
         width: 25%;
     }
-
-    .titulo{
-        font-size: 5vh;
-        color: rgb(199, 199, 199);
-        font-weight: bold;
-        margin: 0;
-    }
-    .logo{
-        height: 6vh;
-        width: auto;
-        margin: 2vh;
-    }
-    .header{
-        background-color:var(--bg);
-        width: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        border-radius: 0vw 0vw 3vw 3vw;
-        box-shadow: 0px 1vw 5px rgb(80, 80, 80);
-    }
 }
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+
+
+
+
 
 @media (min-width: 1025px) {
     .titulo{
@@ -110,13 +150,14 @@ body{
         display: none;
     }
     .descd{
-        position: absolute;
+        position: fixed;
+        border: 10px;
         text-align: left;
-        right: 0%;
-        top: 30vw;
+        right: 6vw;
+        top: min(32vw, 1486px);
         color: rgb(199, 199, 199);
-        font-size: 2.5vw;
-        width: 23vw;
+        font-size: 2vw;
+        width: 27vw;
     }
     .posm{
         display: none;
@@ -166,6 +207,7 @@ body{
         background-color: var(--acc);
         color: white;
         cursor: pointer;
+        transition: background-color 0.75s;
     }
     .bord{
         width: 8vh;
@@ -183,7 +225,7 @@ body{
         left: 0;
         top: 0;
         border-radius: 0vw 0vw 1.1vw 1.1vw;
-        box-shadow: 0px 0.3vw 5px rgb(80, 80, 80);
+        box-shadow: 0px 0.3vh 5px rgb(80, 80, 80);
     }
 }
 
