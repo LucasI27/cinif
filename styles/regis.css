@@ -1,6 +1,7 @@
 :root{
     --acc: #00A160;
     --bg: #131516;
+    --texto: rgb(199, 199, 199);
 }
 
 body{
@@ -8,22 +9,11 @@ body{
     background-color: var(--bg);
 }
 
-.loginb:hover{
+
+
+.loginb,.envb:hover{
     background-color: #60c792;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -74,24 +64,6 @@ body{
         margin: auto;
     }
 
-    .descd{
-        display: none;
-    }
-
-    .descm{
-        color: #C7C7C7;
-        font-size: 5vw;
-        text-align: center;
-        margin: 4vh;
-    }
-
-    .bannerm{
-        width: 100%;
-        height: auto;
-    }
-    .bannerd{
-        display: none;
-    }
     .balaot{
         margin: 3vw;
         position: relative;
@@ -110,6 +82,7 @@ body{
     .loginb{
         border-radius: 1vh;
         border: none;
+        margin-right: 2vh;
         height: min(20%, 100px);
         font-size: 1.5rem;
         font-family:Product Sans ;
@@ -122,6 +95,62 @@ body{
     .bord{
         width: 25%;
     }
+
+    .form{
+        padding: 2vh;
+        position: relative;
+        border-radius: 2vh;
+        top: 3vh;
+        width: 89vw;
+        margin: auto;
+        background-color: var(--bg);
+        box-shadow: 0px 0vh 5px rgb(80, 80, 80);
+    }
+    
+    .label{
+        color: var(--texto);
+        font-size: 1.1rem;
+        margin-top: 1vh;
+    }
+    
+    .tituloform{
+        color: var(--texto);
+        text-align: center;
+    }
+    
+    .campo{
+        border-radius: 1vh;
+        border: none;
+        width: 90%;
+        font-size: 1.1rem;
+        padding: 1vh;
+        margin: 1vh;
+    }
+
+    .envb{
+        border: none;
+        margin-top: 3vh;
+        font-size: 1.2rem;
+        background-color: var(--acc);
+        color: white;
+        border-radius: 1vh;
+        height: 5vh;
+        width: auto;
+    }
+    
+    .erro{
+        padding: 2vh;
+        position: relative;
+        border-radius: 2vh;
+        top: 5vh;
+        color: orange;
+        width: 89vw;
+        margin: auto;
+        background-color: var(--bg);
+        box-shadow: 0px 0vh 5px rgb(80, 80, 80);
+
+    }
+    
 }
 
     
@@ -147,31 +176,7 @@ body{
         font-weight: bold;
         margin: 3vh;
     }
-    .descm{
-        display: none;
-    }
-    .descd{
-        position: fixed;
-        border: 10px;
-        text-align: left;
-        right: 6vw;
-        top: min(32vw, 1486px);
-        color: rgb(199, 199, 199);
-        font-size: 2vw;
-        width: 27vw;
-    }
-    .posm{
-        display: none;
-    }
-    .bannerm{
-        display: none;
-    }
-    .bannerd{
-        width: 65vw;
-        height: auto;
-        margin-top: 15vh;
-        margin-right: 30vw;
-    }
+
     .balaot{
         margin: 1.5vw;
         position: relative;
@@ -210,10 +215,7 @@ body{
         transition: background-color 0.75s;
         word-break: keep-all;
     }
-    .bord{
-        width: 8vh;
-        padding-right: 4vh;
-    }
+
     .logo{
         height: 10vh;
         width: auto;
@@ -228,4 +230,50 @@ body{
         border-radius: 0vw 0vw 1.1vw 1.1vw;
         box-shadow: 0px 0.3vh 5px rgb(80, 80, 80);
     }
+
+    .bord{
+        width: 8vh;
+        padding-right: 4vh;
+    }
+
+    
+    .form{
+        padding: 2vh;
+        border-radius: 2vh;
+        margin-top: 22vh;
+        width: calc(95% - 32vw);
+        margin-left: 1vw;
+        background-color: var(--bg);
+        box-shadow: 0px 0vh 5px rgb(80, 80, 80);;
+    }
+
+    .label{
+        color: var(--texto);
+        font-size: 1.1rem;
+        margin-top: 1vh;
+    }
+
+    .tituloform{
+        color: var(--texto);
+        text-align: center;
+    }
+
+    .campo{
+        border-radius: 1vh;
+        border: none;
+        width: 90%;
+        font-size: 1.1rem;
+        padding: 1vh;
+        margin: 1vh;
+    }
+
+    .erro{
+        margin-top: 2vh;
+        background-color: var(--bg);
+        padding: 1vh;
+        box-shadow: 0px 0vh 5px rgb(80, 80, 80);;
+        color: orange;
+        border-radius: 2vh;
+    }
+
 }
