@@ -8,6 +8,8 @@ $erros = array();
 $user = '';
 $email = '';
 
+// CADASTRO
+
 if (isset($_POST['cadb'])){
     $user = $_POST['user'];
     $email = $_POST['email'];
@@ -17,23 +19,23 @@ if (isset($_POST['cadb'])){
 
     // verificação
     if (empty($user)){
-        $erros['username'] = 'Nome de usuário necessário';
+        $erros['username'] = 'Eita, parece que você esqueceu de colocar seu nome de usuário';
+    }
+    
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $erros['email'] = 'Esse email aí não tem precedência nenhuma';
     }
 
     if (empty($email)){
-        $erros['email'] = 'Email necessário';
-    }
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $erros['email'] = 'Email invalido';
+        $erros['email'] = 'Puts, parece que você deixou passar o campo de email';
     }
 
       if (empty($password)){
-        $erros['password'] = 'Senha necessária';
+        $erros['password'] = 'Não esquece da senha';
     }
 
     if ($password !== $confpassword){
-        $erros['confpassword'] = 'Senhas diferentes';
+        $erros['confpassword'] = 'As senhas tão diferentes burro';
     }
 
     $emailQuerry = 'SELECT * FROM users WHERE email=? LIMIT 1';
@@ -45,7 +47,7 @@ if (isset($_POST['cadb'])){
     $stmt->close();
 
     if ($userCont > 0) {
-        $erros['email'] = 'Ei! Esse email já está cadastrado';
+        $erros['email'] = 'Opa! Esse email já está cadastrado, clica no botão de login aí em cima se quiser entrar com ele';
     }
 
     if (count($erros) === 0) {
@@ -53,7 +55,7 @@ if (isset($_POST['cadb'])){
         $token = bin2hex(random_bytes(50));
         $verif = false;
         $sql = 'INSERT INTO users (user, email, verif, token, password) VALUES (?, ?, ?, ?, ?)';
-        $stmt = $con->prepare($sql);
+        $stmt = $conexao->prepare($sql);
         $stmt->bind_param('ssbss', $user, $email, $verif, $token, $password);
         
         if ($stmt->execute()){
@@ -64,15 +66,50 @@ if (isset($_POST['cadb'])){
             $_SESSION['email'] = $email;
             $_SESSION['verif'] = $verif;
 
-            $_SESSION['msg'] = 'Opa, iae! Bem vindo';
-            $_SESSION['alert_class'] = 'sucesso esso';
-            header('location: home.php');
+            $_SESSION['msg'] = 'Opa, iae! Bem vindo, antes de qualquer coisa, dê uma checada no seu email e volte aqui depois';
+            header('location: emailverif.php');
             exit();
         } else {
-                $erros['db_error'] = 'molhou tudo ai no bd';
+            $erros['db_error'] = 'molhou tudo ai no bd';
         }
 
     }
     
 }
 
+//LOGIN
+
+if (isset($_POST['loginb'])) {
+    $user = $_POST['user'];
+    $password = $_POST['password'];
+
+    //validação
+    if (empty($user)){
+        $erros['username'] = 'Eita, parece que você esqueceu de colocar seu nome de usuário';
+    }
+    if (empty($password)){
+        $erros['password'] = 'Não esquece da senha';
+    }
+
+    $sql = "SELECT * FROM users WHERE email=? OR user=? LIMIT=1";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param('ss', $user, $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $usera = $result->fetch_assoc();
+
+    if (password_verify($password, $usera['password'])) {
+        //loguei é nos
+        $_SESSION['id'] = $usera['id'];
+        $_SESSION['username'] = $usera['user'];
+        $_SESSION['email'] = $usera['email'];
+        $_SESSION['verif'] = $usera['verif'];
+
+        $_SESSION['msg'] = 'Opa, iae! Bem vindo, antes de qualquer coisa, dê uma checada no seu email e volte aqui depois';
+        header('location: emailverif.php');
+        exit();
+    }else{
+        $erros['errologin'] = 'tem alguma coisa errada aí';
+   }
+    
+}

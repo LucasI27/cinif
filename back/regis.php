@@ -19,10 +19,21 @@
                 <td class="bord"><a href="login.php"><button class="loginb">Login</button></a></td>
             </tr>
         </table>
-        <div class="seta"></div>
-        <div class="balao">
-            <p class="balaot">Já tem uma conta? Entre por aqui!</p>
-        </div>
+        <?php if (count($erros) > 0): ?>
+            <div class="erro">
+                <?php foreach($erros as $erros): ?>
+                    <li class="errot"><?php echo $erros; ?></li>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div class="seta"></div>
+            <div class="balao">
+                <p class="balaot">Já tem uma conta? Entre por aqui!</p>
+            </div>
+        <?php endif; ?>
+
+
+
         <form action="regis.php" method="post" class="form">
             <h2 class="tituloform">Cadastro</h3>
             <div>
@@ -54,13 +65,7 @@
             </div>
         </form>
         
-        <?php if (count($erros) > 0): ?>
-            <div class="erro">
-                <?php foreach($erros as $erros): ?>
-                    <li><?php echo $erros; ?></li>
-                    <?php endforeach; ?>
-                </div>
-                <?php endif; ?>
+
     </div>
 </body>
 </html>

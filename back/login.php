@@ -1,3 +1,4 @@
+<?php require_once '../control/autcontrol.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,10 +19,18 @@
                 <td class="bord"><a href="regis.php"><button class="loginb">Registre</button></a></td>
             </tr>
         </table>
-        <div class="seta"></div>
-        <div class="balao">
-            <p class="balaot">Ainda não tem uma conta? Faça seu cadastro aqui!</p>
-        </div>
+        <?php if (count($erros) > 0): ?>
+            <div class="erro">
+                <?php foreach($erros as $erros): ?>
+                    <li class="errot"><?php echo $erros; ?></li>
+                <?php endforeach; ?>
+            </div>
+        <?php else: ?>
+            <div class="seta"></div>
+            <div class="balao">
+                <p class="balaot">Ainda não tem uma conta? Registre-se aqui!</p>
+            </div>
+        <?php endif; ?>
     </div>
         <form action="login.php" method="post" class="form">
             <h2 class="tituloform">Login</h3>
@@ -38,7 +47,7 @@
             </div>
       
             <div>
-            <button type="submit">Enviar</button>
+            <button name="loginb" class="envb" type="submit">Enviar</button>
             </div>
         </form>
 </body>
