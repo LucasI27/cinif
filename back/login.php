@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">   
-    <link rel="icon" href="img/logo2.png">
+    <link rel="icon" href="../img/logo2.png">
     <link rel="stylesheet" href="../styles/regis.css">
     <title>Login</title>
 </head>
@@ -37,7 +37,7 @@
             <div>
                 <label class="label" for="user">Nome de usuário ou email</label>
                 <br>
-                <input type="text" name="user" class="campo">
+                <input type="text" name="user" value="<?php echo $user; ?>" class="campo">
             </div>
 
             <div>

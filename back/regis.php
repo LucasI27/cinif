@@ -39,7 +39,7 @@
             <div>
                 <label class="label" for="user">Nome de usuário</label>
                 <br>
-                <input type="text" name="user" class="campo">
+                <input type="text" name="user" value="<?php echo $user; ?>" class="campo">
             </div>
             
             <div>

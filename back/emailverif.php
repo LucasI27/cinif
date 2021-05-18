@@ -1,4 +1,17 @@
-<?php require_once '../control/autcontrol.php';?>
+<?php
+require_once '../control/autcontrol.php';
+
+if (isset($_GET['token'])) {
+    $token = $_GET['token'];
+    verifUser($token);
+}
+
+if (!isset($_SESSION['id'])) {
+    header('location', 'login.php');
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,7 +36,7 @@
             </tr>
         </table>
 
-        <?php if ($_SESSION['verif']):?>    
+        <?php if (!$_SESSION['verif']):?>    
             <div class="balao">
                 <p class="balaot">Não feche essa guia, foi enviado um email de confirmação para <?php echo $_SESSION['email']; ?></p>
             </div>
@@ -31,7 +44,7 @@
 
     </div>
     <div class="aln">
-        <?php if (!$_SESSION['verif']):?>
+        <?php if ($_SESSION['verif']):?>
             <td><a href="login.php"><button class="verifb">Verificado</button></a></td>
             <img class="em_v" src="../img/em_v.png">
             <?php else: ?>

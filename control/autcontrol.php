@@ -2,7 +2,8 @@
 
 session_start();
 
-require '../back/conexao.php';
+require 'conexao.php';
+require_once 'emailcontrol.php';
 
 $erros = array();
 $user = '';
@@ -19,7 +20,7 @@ if (isset($_POST['cadb'])){
 
     // verificação
     if (empty($user)){
-        $erros['username'] = 'Eita, parece que você esqueceu de colocar seu nome de usuário';
+        $erros['user'] = 'Eita, parece que você esqueceu de colocar seu nome de usuário';
     }
     
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -35,7 +36,7 @@ if (isset($_POST['cadb'])){
     }
 
     if ($password !== $confpassword){
-        $erros['confpassword'] = 'As senhas tão diferentes burro';
+        $erros['confpassword'] = 'As senhas estão diferentes';
     }
 
     $emailQuerry = 'SELECT * FROM users WHERE email=? LIMIT 1';
@@ -62,9 +63,11 @@ if (isset($_POST['cadb'])){
             // loguei amem
             $user_id = $conexao->$insert_id;
             $_SESSION['id'] = $user_id;
-            $_SESSION['username'] = $username;
+            $_SESSION['user'] = $user;
             $_SESSION['email'] = $email;
             $_SESSION['verif'] = $verif;
+
+            verificar_email($email, $token);
 
             $_SESSION['msg'] = 'Opa, iae! Bem vindo, antes de qualquer coisa, dê uma checada no seu email e volte aqui depois';
             header('location: emailverif.php');
@@ -85,31 +88,61 @@ if (isset($_POST['loginb'])) {
 
     //validação
     if (empty($user)){
-        $erros['username'] = 'Eita, parece que você esqueceu de colocar seu nome de usuário';
+        $erros['user'] = 'Eita, parece que você esqueceu de colocar seu nome de usuário';
     }
     if (empty($password)){
         $erros['password'] = 'Não esquece da senha';
     }
 
-    $sql = "SELECT * FROM users WHERE email=? OR user=? LIMIT=1";
-    $stmt = $conexao->prepare($sql);
-    $stmt->bind_param('ss', $user, $user);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $usera = $result->fetch_assoc();
-
-    if (password_verify($password, $usera['password'])) {
-        //loguei é nos
-        $_SESSION['id'] = $usera['id'];
-        $_SESSION['username'] = $usera['user'];
-        $_SESSION['email'] = $usera['email'];
-        $_SESSION['verif'] = $usera['verif'];
-
-        $_SESSION['msg'] = 'Opa, iae! Bem vindo, antes de qualquer coisa, dê uma checada no seu email e volte aqui depois';
-        header('location: emailverif.php');
-        exit();
-    }else{
-        $erros['errologin'] = 'tem alguma coisa errada aí';
-   }
+    if (count($erros) === 0) {
+        $sql = "SELECT * FROM users WHERE email=? OR user=? LIMIT 1";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param('ss', $user, $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $usuario = $result->fetch_assoc();
     
+        if (password_verify($password, $usuario['password'])) {
+            //loguei é nos
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['user'] = $usuario['user'];
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['verif'] = $usuario['verif'];
+    
+            $_SESSION['msg'] = 'Opa, iae! Bem vindo, antes de qualquer coisa, dê uma checada no seu email e volte aqui depois';
+            header('location: emailverif.php');
+            exit();
+        }else{
+            $erros['errologin'] = 'tem alguma coisa errada aí';
+       }        
+    }
+
+    
+}
+
+
+function verifUser($token){
+
+    global $conexao;
+    $sql = "SELECT * FROM users WHERE token='$token' LIMIT 1";
+    $result = mysqli_query($conexao, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $usuario = mysqli_fetch_assoc($result);
+        $update_querry = "UPDATE users SET verif=1 WHERE token='$token'";
+        
+        if (mysqli_query($conexao, $update_querry)) {
+            // o pai logou
+            $_SESSION['id'] = $usuario['id'];
+            $_SESSION['user'] = $usuario['user'];
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['verif'] = 1;
+    
+            $_SESSION['msg'] = 'Verificado!';
+            header('location: emailverif.php');
+            exit();
+        }
+    }else{
+        echo 'Usuário não encontrado.';
+    }
 }

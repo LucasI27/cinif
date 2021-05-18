@@ -121,11 +121,22 @@ body{
     
     .campo{
         border-radius: 1vh;
-        border: none;
         width: 90%;
+        border-color: #2D2E2E;
+        outline: none;
+        border-width: 0;
         font-size: 1.1rem;
         padding: 1vh;
         margin: 1vh;
+        background-color: #2D2E2E;
+        color: var(--texto);
+    }
+
+    .campo:focus{
+        border-width: 0.5vh;
+        border-style: solid;
+        border-color: var(--acc);
+        background-color: var(--bg);
     }
 
     .envb{
