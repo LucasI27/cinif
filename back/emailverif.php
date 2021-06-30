@@ -38,19 +38,18 @@ if (!isset($_SESSION['id'])) {
 
         <?php if (!$_SESSION['verif']):?>    
             <div class="balao">
-                <p class="balaot">Não feche essa guia, foi enviado um email de confirmação para <?php echo $_SESSION['email']; ?></p>
+                <p class="balaot">Foi enviado um email de confirmação para <?php echo $_SESSION['email']; ?>, dá uma conferida lá </p>
             </div>
         <?php endif;?>
 
-    </div>
     <div class="aln">
         <?php if ($_SESSION['verif']):?>
             <td><a href="login.php"><button class="verifb">Verificado</button></a></td>
             <img class="em_v" src="../img/em_v.png">
             <?php else: ?>
-            <p class="descm"><?php echo $_SESSION['msg']; ?></p>
-            <img class="em_x" src="../img/em_x.png">
+            <img class="em_v" src="../img/em_x.png">
         <?php endif;?>        
+    </div>
     </div>
 
         
