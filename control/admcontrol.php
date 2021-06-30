@@ -12,6 +12,11 @@ $sucesso = '';
 //adicionar a 'catal'
 
 
+echo $_POST['catalogo'];
+echo $_POST['titulo'];
+echo $_POST['genero'];
+echo $_POST['sinopse'];
+
 
 if (isset($_POST['catalogo'])){
     $titulo = $_POST['titulo'];

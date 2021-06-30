@@ -39,8 +39,10 @@
         ?>
         
         <?php if ($resultnum > 0): ?>
-            <?php while ($row = mysqli_fetch_assoc($result)):?>
-                <?php echo '<form action="adm.php" method="post"  class="form" enctype="multipart/form-data">
+            <?php 
+                $form ='';
+                while ($row = mysqli_fetch_assoc($result)){
+                $form .= '<form action="adm.php" method="POST"  class="form" enctype="multipart/form-data">
                     
                     <h2 class="tituloform">Valide o filme</h2>
                     <div>
@@ -61,73 +63,84 @@
 
 
 
-                        <option value="romance"
-                        <?php if ($row["genero"] === "romance"){
-                            echo "selected";
-                        }?>>romance</option>
+                        <option value="romance"';
+                        
+                        if ($row["genero"] === "romance"){
+                        $form .= "selected";
+                        }
+                        $form .= '>romance</option>';
 
 
 
-                        <option value="suspense" 
-                        <?php if ($row["genero"] === "suspense"){
-                            echo "selected";
-                        }?>>suspense</option>
+                        $form .= '<option value="suspense" ';
+                        if ($row["genero"] === "suspense"){
+                            $form .= "selected";
+                        }
+                        $form .= '>suspense</option>';
 
 
 
-                        <option value="terror" 
-                        <?php if ($row["genero"] === "terror"){
-                            echo "selected";
-                        }?>>terror</option>
+                        $form .= '<option value="terror" ';
+                        if ($row["genero"] === "terror"){
+                            $form .= "selected";
+                        }
+                        $form .= '>terror</option>';
 
 
 
-                        <option value="drama" 
-                        <?php if ($row["genero"] === "drama"){
-                            echo "selected";
-                        }?>>drama</option>
+                        $form .= '<option value="drama" ';
+                        if ($row["genero"] === "drama"){
+                            $form .= "selected";
+                        }
+                        $form .= '>drama</option>';
 
 
 
-                        <option value="comédia"
-                        <?php if ($row["genero"] === "comédia"){
-                            echo "selected";
-                        }?>>comédia</option>
+                        $form .= '<option value="comédia"';
+                        if ($row["genero"] === "comédia"){
+                            $form .= "selected";
+                        }
+                        $form .= '>comédia</option>';
 
 
 
-                        <option value="musical"
-                        <?php if ($row["genero"] === "musical"){
-                            echo "selected";
-                        }?>>musical</option>
+                        $form .= '<option value="musical"';
+                        if ($row["genero"] === "musical"){
+                            $form .= "selected";
+                        }
+                        $form .= '>musical</option>';
 
 
 
-                        <option value="animaçao" 
-                        <?php if ($row["genero"] === "animaçao"){
-                            echo "selected";
-                        }?>>animação</option>
+                        $form .= '<option value="animaçao" ';
+                        if ($row["genero"] === "animaçao"){
+                            $form .= "selected";
+                        }
+                        $form .= '>animação</option>';
 
 
 
-                        <option value="ficcao" 
-                        <?php if ($row["genero"] === "ficcao"){
-                            echo "selected";
-                        }?>>ficção</option>
+                        $form .= '<option value="ficcao" ';
+                        if ($row["genero"] === "ficcao"){
+                            $form .= "selected";
+                        }
+                        $form .= '>ficção</option>';
 
 
 
-                        <option value="documentario" 
-                        <?php if ($row["genero"] === "documentario"){
-                            echo "selected";
-                        }?>>documentário</option>
+                        $form .= '<option value="documentario" ';
+                        if ($row["genero"] === "documentario"){
+                            $form .= "selected";
+                        }
+                        $form .= '>documentário</option>';
 
 
 
-                        <option value="acao" 
-                        <?php if ($row["genero"] === "acao"){
-                            echo "selected";
-                        }?>>ação</option>
+                        $form .= '<option value="acao" ';
+                        if ($row["genero"] === "acao"){
+                            $form .= "selected";
+                        }
+                        $form .= '>ação</option>
 
 
 
@@ -137,7 +150,7 @@
                     <div>
                         <label class="label" for="sinopse">Sinopse(opcional)</label>
                         <br>            
-                        <textarea name="sinopse" class="campo" cols="30" rows="5"><?php echo $row["sinopse"]?></textarea>
+                        <textarea name="sinopse" class="campo" cols="30" rows="5">'. $row["sinopse"] .'</textarea>
                     </div>
                     
                     
@@ -154,11 +167,15 @@
                     </div>
 
                 </form> ';
-                ?>
-            <?php endwhile ?>    
+                
+        }
+            
+        echo $form;
+            ?> 
         <?php else: ?>
             <p>Nenhum filme foi sugerido recentemente</p>
-        <?php endif; ?>
+        <?php endif; 
+        ?>
 
 
 
