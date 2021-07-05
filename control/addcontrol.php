@@ -6,7 +6,6 @@ $erros2 = array();
 $titulo = '';
 $genero = '';
 $sinopse = '';
-$sucesso = '';
 
 // adicionar à catal_temp
 
@@ -25,7 +24,7 @@ if (isset($_POST['tempb'])){
         $erros2['titulo'] = 'Nunca vi um filme sem título, coloca alguma coisa aí ;)';
     }
     
-    if (empty($sinopse)){
+    if (empty($sinopse OR $sinopse = 'NULL')){
         $sinopse = 'não foi fornecido';
     }
 
@@ -48,7 +47,7 @@ if (isset($_POST['tempb'])){
         if (!$conexao->query($sql)) {
             $erros2['bd'] = mysqli_error($conexao);
         }else{
-            $sucesso = 'Filme adicionado com sucesso';
+            $erros2['sucesso'] = 'Filme adicionado com sucesso';
         }
     }
 }

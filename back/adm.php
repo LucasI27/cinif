@@ -1,4 +1,4 @@
-<?php require_once '../control/addcontrol.php'; ?> 
+<?php require_once '../control/admcontrol.php'; ?> 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,17 +17,15 @@
                 <td><p class="titulo">CinIF</p></td>
             </tr>
         </table>
-        <?php if (count($erros2) > 0): ?>
+        <?php if (count($erros3) > 0): ?>
             <div class="erro">
-                <?php foreach($erros2 as $erros2): ?>
-                    <li class="errot"><?php echo $erros2; ?></li>
+                <?php foreach($erros3 as $erros3): ?>
+                    <li class="errot"><?php echo $erros3; ?></li>
                 <?php endforeach; ?>
             </div>
         <?php else: ?>
             <div class="balao">
-                  <?php if (isset($sucesso)) ?>
-                  <p class="balaot"><?php echo $sucesso; ?></p>
-                     <p class="balaot">Adicione um filme ao nosso catálogo, ele pode aparecer futuramente nas votações</p>
+            <p class="balaot">Adicione um filme ao nosso catálogo, ele pode aparecer futuramente nas votações</p>
             </div>
         <?php endif; ?>
 
@@ -39,141 +37,150 @@
         ?>
         
         <?php if ($resultnum > 0): ?>
-            <?php 
-                $form ='';
-                while ($row = mysqli_fetch_assoc($result)){
-                $form .= '<form action="adm.php" method="POST"  class="form" enctype="multipart/form-data">
+            <?php while ($row = mysqli_fetch_assoc($result)):?>
+
+            <form action="adm.php" method="POST"  class="form" enctype="multipart/form-data">
                     
                     <h2 class="tituloform">Valide o filme</h2>
                     <div>
                         <label class="label" for="titulo">Título</label>
                         <br>
-                        <input type="text" name="titulo" class="campo" value="'. $row["titulo"]. '">
+                        <input type="text" name="titulo" class="titulof" value="<?php echo $row["titulo"]; ?> ">
+                        <a target="blank" href="https://www.google.com/search?q=<?php echo $row['titulo']; ?>">
+                            <img src="../img/pesq.png" class="pesq">
+                        </a>
                     </div>
-                    
-                    <?php 
-                    $_POST["id"] = $row["id"];
-                    echo $_POST["id"];
-                    ?>
+            
+
+                    <br>
+                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
 
                     <div>
                         <label class="label" for="genero" class="select">Gênero</label>
                         <br>
-                        <select name="genero">
-
-
-
-                        <option value="romance"';
+                        <select name="genero" class="dropdown-select">
                         
-                        if ($row["genero"] === "romance"){
-                        $form .= "selected";
-                        }
-                        $form .= '>romance</option>';
+                        
+                        
+                        <option value="romance"
+                        <?php if ($row["genero"] === "romance"){
+                            echo "selected";
+                        } ?>
+                        >Romance</option>
 
 
 
-                        $form .= '<option value="suspense" ';
-                        if ($row["genero"] === "suspense"){
-                            $form .= "selected";
-                        }
-                        $form .= '>suspense</option>';
+                        <option value="suspense" 
+                        <?php if ($row["genero"] === "suspense"){
+                            echo "selected";
+                        } ?>
+                        >Suspense</option>
 
 
 
-                        $form .= '<option value="terror" ';
-                        if ($row["genero"] === "terror"){
-                            $form .= "selected";
-                        }
-                        $form .= '>terror</option>';
+                        <option value="terror" 
+                        <?php if ($row["genero"] === "terror"){
+                            echo "selected";
+                        } ?>
+                        >Terror</option>
 
 
 
-                        $form .= '<option value="drama" ';
-                        if ($row["genero"] === "drama"){
-                            $form .= "selected";
-                        }
-                        $form .= '>drama</option>';
+                        <option value="drama" 
+                        <?php if ($row["genero"] === "drama"){
+                            echo "selected";
+                        } ?>
+                        >Drama</option>
 
 
 
-                        $form .= '<option value="comédia"';
-                        if ($row["genero"] === "comédia"){
-                            $form .= "selected";
-                        }
-                        $form .= '>comédia</option>';
+                        <option value="comédia"
+                        <?php if ($row["genero"] === "comédia"){
+                            echo "selected";
+                        } ?>
+                        >Comédia</option>
 
 
 
-                        $form .= '<option value="musical"';
-                        if ($row["genero"] === "musical"){
-                            $form .= "selected";
-                        }
-                        $form .= '>musical</option>';
+                        <option value="musical"
+                        <?php if ($row["genero"] === "musical"){
+                            echo "selected";
+                        } ?>
+                        >Musical</option>
 
 
 
-                        $form .= '<option value="animaçao" ';
-                        if ($row["genero"] === "animaçao"){
-                            $form .= "selected";
-                        }
-                        $form .= '>animação</option>';
+                        <option value="animaçao" 
+                        <?php if ($row["genero"] === "animaçao"){
+                            echo "selected";
+                        } ?>
+                        >Animação</option>
 
 
 
-                        $form .= '<option value="ficcao" ';
-                        if ($row["genero"] === "ficcao"){
-                            $form .= "selected";
-                        }
-                        $form .= '>ficção</option>';
+                        <option value="ficcao" 
+                        <?php if ($row["genero"] === "ficcao"){
+                            echo "selected";
+                        } ?>
+                        >Ficção</option>
 
 
 
-                        $form .= '<option value="documentario" ';
-                        if ($row["genero"] === "documentario"){
-                            $form .= "selected";
-                        }
-                        $form .= '>documentário</option>';
+                        <option value="documentario" 
+                        <?php if ($row["genero"] === "documentario"){
+                            echo "selected";
+                        } ?>
+                        >Documentário</option>
 
 
 
-                        $form .= '<option value="acao" ';
-                        if ($row["genero"] === "acao"){
-                            $form .= "selected";
-                        }
-                        $form .= '>ação</option>
-
-
-
+                        <option value="acao" 
+                        <?php if ($row["genero"] === "acao"){
+                            echo "selected";
+                        } ?>
+                        >ação</option>
                         </select>
                     </div>
                     
+
+                    <br>
+
+
                     <div>
                         <label class="label" for="sinopse">Sinopse(opcional)</label>
                         <br>            
-                        <textarea name="sinopse" class="campo" cols="30" rows="5">'. $row["sinopse"] .'</textarea>
+                        <textarea name="sinopse" class="campo" cols="30" rows="5" style="resize: none;"><?php echo $row["sinopse"]; ?></textarea>
                     </div>
                     
+
+                    <br>
                     
  
                     <div>
-                        <input type="file" name="img" id="image" accept="image/*" onchange="document.getElementById("blah").src = window.URL.createObjectURL(this.files[0])" />
+                        <label for="img" class="label">Imagem</label>
+                        <br>
+                        <input type="file" name="img" id="image" class="img" />
                     </div>
-                    <div>
-                        <img id="blah" width="100" height="auto" />
-                    </div>
+
+
+                    <br>
+
 
                     <div>
                         <button type="submit" name="catalogo" class="envb">Validar</button>
+                        <button type="submit" name="apagar" class="apagarb" >Apagar</button>
                     </div>
 
-                </form> ';
+                </form> 
                 
-        }
-            
-        echo $form;
-            ?> 
+                <hr class="linha">
+
+        <?php endwhile; ?>
         <?php else: ?>
-            <p>Nenhum filme foi sugerido recentemente</p>
+            <div class="nof">
+                <img src="../img/inf.png" class="noimg" alt="">
+                <p>Nenhum filme foi sugerido recentemente</p>
+            </div>
         <?php endif; 
         ?>
 
@@ -183,25 +190,4 @@
     </div>
 </body>
 </html>
-<script>  
- $(document).ready(function(){  
-      $('#insert').click(function(){  
-           var image_name = $('#image').val();  
-           if(image_name == '')  
-           {  
-                alert("Please Select Image");  
-                return false;  
-           }  
-           else  
-           {  
-                var extension = $('#image').val().split('.').pop().toLowerCase();  
-                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)  
-                {  
-                     alert('Invalid Image File');  
-                     $('#image').val('');  
-                     return false;  
-                }  
-           }  
-      });  
- });  
- </script>  
+ 

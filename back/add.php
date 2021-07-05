@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">   
     <link rel="icon" href="../img/logo2.png">
     <link rel="stylesheet" href="../styles/regis.css">
+    <script src="slct.js"></script>
     <title>Adicionar</title>
 </head>
 <body>
@@ -19,19 +20,36 @@
                 <td><p class="titulo">CinIF</p></td>
             </tr>
         </table>
-        <?php if (count($erros2) > 0): ?>
+        <?php if (count($erros2) > 0 AND !isset($erros2['sucesso'])): ?>
             <div class="erro">
                 <?php foreach($erros2 as $erros2): ?>
                     <li class="errot"><?php echo $erros2; ?></li>
                 <?php endforeach; ?>
             </div>
         <?php else: ?>
+            <?php if (isset($erros2['sucesso'])): ?>
+                <div class="balao">
+                    <p class="balaot"><?php echo $erros2['sucesso']?></p>
+                </div>
+            <?php else: ?>    
             <div class="balao">
-                  <?php if (isset($sucesso)) ?>
-                  <p class="balaot"><?php echo $sucesso; ?></p>
-                     <p class="balaot">Adicione um filme ao nosso catálogo, ele pode aparecer futuramente nas votações</p>
+                <p class="balaot">Adicione um filme ao nosso catálogo, ele pode aparecer futuramente nas votações</p>
             </div>
+            <?php endif; ?>
         <?php endif; ?>
+        
+
+        
+
+        <div class="descd">
+            <img src="../img/inf.png" class="inf">
+            <p>Os filmes adicionados passam por uma validação e análise humana antes de serem adicionadas ao catálogo</p>
+        </div>
+
+        <div class="descm">
+            <p>Os filmes adicionados passam por uma validação e análise humana antes de serem adicionadas ao catálogo</p>
+        </div>
+
 
 
 
@@ -42,29 +60,31 @@
                 <br>
                 <input type="text" name="titulo" class="campo">
             </div>
-            
-            <div>
-                <label class="label" for="genero" class="select">Gênero</label>
+            <br>
+            <div class="container">
+                <label class="label" for="genero" class="dropdown-select">Gênero</label>
                 <br>
-                <select name="genero">
-                <option value="romance" class="select">romance</option>
-                <option value="suspense">suspense</option>
-                <option value="terror">terror</option>
-                <option value="drama">drama</option>
-                <option value="comédia">comédia</option>
-                <option value="musical">musical</option>
-                <option value="animaçao">animação</option>
-                <option value="ficcao">ficção</option>
-                <option value="documentario">documentário</option>
-                <option value="acao">ação</option>
-
+                <select name="genero" class="dropdown-select" >
+                <option value="NULL" disabled selected>Selecione um genero</option>
+                <option value="romance" class="select">Romance</option>
+                <option value="suspense">Suspense</option>
+                <option value="terror">Terror</option>
+                <option value="drama">Drama</option>
+                <option value="comédia">Comédia</option>
+                <option value="musical">Musical</option>
+                <option value="animaçao">Animação</option>
+                <option value="ficcao">Ficção</option>
+                <option value="documentario">Documentário</option>
+                <option value="acao">Ação</option>
                 </select>
             </div>
             
+            <br>
+
             <div>
                 <label class="label" for="sinopse">Sinopse(opcional)</label>
                 <br>            
-                <textarea name="sinopse" class="campo" cols="30" rows="5"></textarea>
+                <textarea name="sinopse" class="campo" cols="30" rows="5" style="resize: none;"></textarea>
             </div>
             
 
