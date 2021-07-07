@@ -1,3 +1,7 @@
+<?php
+require_once '../control/conexao.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">   
     <link rel="icon" href="../img/logo2.png">
-    <link rel="stylesheet" href="../styles/init.css">
+    <link rel="stylesheet" href="../styles/vote.css">
     <title>CinIF</title>
 </head>
 <body>
@@ -14,19 +18,65 @@
         <table class="header">
             <tr>
                 <td class="bord"><img src="../img/logo2.png" alt="logo" class="logo"></td>
-                <td><p class="titulo">CinIF</p></td>
-                <td class="bord"><a href="../back/regis.php"><button class="loginb">Cadastre</button></a></td>
+                <td><p class="titulo">CinIF - Votação</p></td>
+                <td class="navbg">
+                    <table>
+                    <tr>
+                    <td class="bord"><a href="../back/voteg.php"><button class="navops">Gêneros</button>
+                    <div class="seta"></div>
+                    </td>
+                    <td class="bord"><a href="../back/votef.php"><button class="navop">Filmes</button></td>
+                    <td class="bord"><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
+                    </tr>
+                    </table>
+
+                </td>
             </tr>
         </table>
-        <div class="seta"></div>
         <div class="balao">
-            <p class="balaot">Faça o login ou cadastre-se para votar no filme que é exibido toda semana no auditório!</p>
+            <p class="balaot">Os filmes presentes na próxima votação serão do gênero no topo da lista!</p>
         </div>
-            <p class="descm">O filme no topo da lista será exibido, vote na sua preferência</p>
-            <img src="../img/banner_m.png" class="bannerm" alt="banner">
-    </div>
 
-    <img src="../img/banner_d.png" class="bannerd" alt="banner">
-    <p class="descd">O filme no topo da lista será exibido, vote na sua preferência</p>
+        <?php
+        $sql = "SELECT * FROM genero WHERE numerogenero>0 ORDER BY numerovotosg DESC;";
+        $result1 = mysqli_query($conexao, $sql);
+        $resultnum = mysqli_num_rows($result1);
+        $row = mysqli_fetch_assoc($result1)
+        ?>
+
+
+
+        <?php if ($resultnum > 0): ?>
+        <div class="contcard">
+            
+            <form method="POST" action="voteg.php" class="cardprim">
+                <img src="../img/botaov.png" class="voteb" alt="votar">
+                <p class="numv"><?php echo $row['numerovotog']; ?></p>
+                <p class="cardt"><?php echo $row['nomegenro']; ?></p>
+            </form>
+            
+            
+            <?php while ($row = mysqli_fetch_assoc($result1)):?>
+            
+                <form method="POST" action="voteg.php" class="card">
+                    <img src="../img/botaov.png" class="voteb" alt="votar">
+                    <p class="numv"><?php echo $i; ?></p>
+                    <p class="cardt">texto aaaaaaaaa</p>
+                </form>
+            <?php endwhile; ?>
+        <?php else:?>
+            <div class="nof">
+                <img src="../img/inf.png" class="noimg" alt="">
+                <p>Nenhum filme foi sugerido recentemente</p>
+            </div>
+        <?php endif;?>
+         </div>
+
+
+
+
+
+
+    </div>
 </body>
 </html>

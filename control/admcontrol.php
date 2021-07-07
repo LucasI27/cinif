@@ -12,43 +12,6 @@ $sucesso = '';
 //adicionar a 'catal'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// File upload path
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if(isset($_POST["catalogo"]) && !empty($_FILES["img"]["name"])){
     $titulo = $_POST['titulo'];
     $genero = $_POST['genero'];
@@ -58,8 +21,6 @@ if(isset($_POST["catalogo"]) && !empty($_FILES["img"]["name"])){
     $img = basename($_FILES["img"]["name"]);
     $targetFilePath = $targetDir . $img;
     $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-
-
 
 
     // validacao
@@ -109,8 +70,14 @@ if(isset($_POST["catalogo"]) && !empty($_FILES["img"]["name"])){
         if (!$conexao->query($sql)) {
             $erros3['bd'] = mysqli_error($conexao);
         }else{
-            $sucesso = 'Filme adicionado com sucesso';
+            $sucesso = 'Filme validado com sucesso';
         }
+        $sql = "UPDATE genero SET numgenero = numgenero+1 WHERE nomegenero='$genero';";
+        $stmt = $conexao->prepare($sql);
+        if (!$conexao->query($sql)) {
+            $erros3['bd'] = mysqli_error($conexao);
+        }
+
     }
 }
 
