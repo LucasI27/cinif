@@ -1,4 +1,11 @@
-<?php require_once '../control/admcontrol.php'; ?> 
+<?php
+ require_once '../control/admcontrol.php';
+ require_once '../control/conexao.php';
+ $sql = "SELECT voteg FROM control;";
+ $result = mysqli_query($conexao, $sql);
+ $row = mysqli_fetch_assoc($result);  
+
+?> 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,9 +32,31 @@
             </div>
         <?php else: ?>
             <div class="balao">
-            <p class="balaot">Adicione um filme ao nosso catálogo, ele pode aparecer futuramente nas votações</p>
+            <p class="balaot">Os filmes ao lado foram sugeridos pelo usuário, valide-os para serem adicionados ao catálogo</p>
             </div>
-        <?php endif; ?>
+        <?php endif;?>
+
+
+
+
+        <form class="contcontrol" method="POST" action="adm.php">
+            <div class="tside">
+                <label class="label" for="sinopse">Data e local</label>
+                <textarea name="mens" class="mens" cols="30" rows="8" style="resize: none;" <?php if ($row['voteg'] == 1) {
+                    echo 'disabled';
+                }?>></textarea>
+            </div>
+            <div class="bside">
+                <button type="submit" name="voteini" class="controlb" <?php if ($row['voteg'] == 1) {
+                    echo 'disabled';
+                }?>>Iniciar votação</button>
+                <button type="submit" name="voteter" class="controlb" <?php if ($row['voteg'] == 0) {
+                    echo 'disabled';
+                }?>>Terminar votação</button>
+            </div>
+        </form>
+
+
 
 
         <?php 
@@ -37,6 +66,7 @@
         ?>
         
         <?php if ($resultnum > 0): ?>
+        <div class="i">
             <?php while ($row = mysqli_fetch_assoc($result)):?>
 
             <form action="adm.php" method="POST"  class="form" enctype="multipart/form-data">
@@ -177,6 +207,7 @@
 
         <?php endwhile; ?>
         <?php else: ?>
+        </div>
             <div class="nof">
                 <img src="../img/inf.png" class="noimg" alt="">
                 <p>Nenhum filme foi sugerido recentemente</p>

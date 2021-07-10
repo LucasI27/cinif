@@ -17,6 +17,11 @@ body{
 }
 
 
+button[disabled=disabled], button:disabled {
+    filter: brightness(50%);
+    cursor:not-allowed;
+}
+
 
 .loginb:hover{
     filter: brightness(150%);
@@ -41,6 +46,12 @@ textarea:hover{
     filter: brightness(120%);
 }
 
+.mens:focus{
+    border-width: 0.5vh;
+    border-style: solid;
+    border-color: var(--acc);
+    background-color: var(--bg);
+}
 
 
 
@@ -140,7 +151,7 @@ textarea:hover{
         padding: 2vh;
         position: relative;
         border-radius: 2vh;
-        top: 1vh;
+        top: 5vh;
         width: 89vw;
         margin: auto;
         background-color: var(--bg);
@@ -148,11 +159,7 @@ textarea:hover{
     }
     
     .linha{
-        margin-top: 5vh ;
-        margin-bottom:3vh ;
-        color: var(--texto);
-        width: 80vw;
-        margin-left: 12vw;
+        opacity: 0%;
     }
     
 
@@ -357,6 +364,60 @@ textarea:hover{
             filter: brightness(150%);
         }
 
+
+        .contcontrol{
+            text-align: center;
+            position: relative;
+            top: 3vh;
+            padding: 0.1vh;
+            border-radius: 3vw;
+            width: 90%;
+            margin: auto;
+            background-color:#0d0e0e;
+            border-radius: 2vh;
+            padding: 1.5vh;
+            display: flex;
+            flex-direction: row-reverse;
+        }
+    
+        .controlb{
+            border: none;
+            padding: 1vh;
+            font-size: 5vw;
+            background-color: var(--acc);
+            color: white;
+            border-radius: 1vh;
+            height: 44%;
+            width: 100%;
+            transition-duration: 0.25s;
+            cursor: pointer;
+            margin-bottom: 2vh;
+        }
+    
+        .bside{
+            width: 50%;
+        }
+            
+        .mens{
+            border-radius: 1vh;
+            width: 88%;
+            border-color: #2D2E2E;
+            outline: none;
+            border-width: 0;
+            font-size: 1.1rem;
+            padding: 1vh;
+            margin: 1vh;
+            background-color: #2D2E2E;
+            color: var(--texto);
+            transition-duration: 0.25s;
+        }
+
+
+        .tside{
+            width: 50%;
+        }
+
+
 }
 
     
@@ -425,7 +486,7 @@ textarea:hover{
     }
     .balao{
         top: 19%;
-        right: 2vw;
+        right: 1vw;
         margin-right: 1vh;
         position: fixed;
         text-align: center;
@@ -447,7 +508,7 @@ textarea:hover{
 
     .erro{
         top: 19%;
-        right: 2vw;
+        right: 1vw;
         margin-right: 1vh;
         position: fixed;
         text-align: center;
@@ -495,7 +556,9 @@ textarea:hover{
 
 
 
-
+    .i{
+        margin-top: 19.4vh;
+    }
 
     .form{
         display: flex;
@@ -503,7 +566,7 @@ textarea:hover{
         justify-items: center;
         padding: 3vh;
         border-radius: 2vh;
-        margin-top: 19.4vh;
+
         width: calc(95% - 32vw);
         margin-left: 1vw;
         background-color: var(--bg);
@@ -511,7 +574,7 @@ textarea:hover{
     }
 
     .linha{
-        margin-top: 19vh ;
+        margin: 5vh ;
         color: var(--texto);
         width: 40vw;
         margin-left: 12vw;
@@ -693,5 +756,49 @@ textarea:hover{
     .pesq:hover{
         filter: brightness(150%);
     }
+
+    .contcontrol{
+        text-align: center;
+        right: 1.2vw;
+        position: fixed;
+        width:29vw; 
+        position: fixed;
+        bottom: 1vh;
+        background-color:#0d0e0e;
+        border-radius: 2vh;
+        padding: 1.5vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .controlb{
+        border: none;
+        padding: 1vh;
+        font-size: 1.8vw;
+        background-color: var(--acc);
+        color: white;
+        border-radius: 1vh;
+        height: auto;
+        width: auto;
+        transition-duration: 0.25s;
+    }
+
+        
+    .mens{
+        border-radius: 1vh;
+        width: 26.5vw;
+        border-color: #2D2E2E;
+        outline: none;
+        border-width: 0;
+        font-size: 1.1rem;
+        padding: 1vh;
+        margin: 1vh;
+        background-color: #2D2E2E;
+        color: var(--texto);
+        transition-duration: 0.25s;
+    }
+
+
+
 
 }

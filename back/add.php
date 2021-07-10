@@ -52,7 +52,7 @@
 
 
 
-
+        <div class="i">
         <form action="add.php" method="post" enctype="multipart/form-data" class="form">
             <h2 class="tituloform">Adicione um filme no catálogo</h3>
             <div>
@@ -65,7 +65,7 @@
                 <label class="label" for="genero" class="dropdown-select">Gênero</label>
                 <br>
                 <select name="genero" class="dropdown-select" >
-                <option value="NULL" disabled selected>Selecione um genero</option>
+                <option value="NULL" selected>Selecione um genero</option>
                 <option value="romance" class="select">Romance</option>
                 <option value="suspense">Suspense</option>
                 <option value="terror">Terror</option>
@@ -92,6 +92,7 @@
                 <button type="submit" name="tempb" class="envb">Enviar</button>
             </div>
         </form> 
+        </div>
     </div>
 </body>
 </html>

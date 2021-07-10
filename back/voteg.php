@@ -1,5 +1,31 @@
 <?php
-require_once '../control/conexao.php';
+require '../control/conexao.php';
+require_once '../control/autcontrol.php';
+require_once '../control/votecontrol.php';
+
+$sql = "SELECT * FROM control";
+$result = mysqli_query($conexao, $sql);
+$control = mysqli_fetch_assoc($result);
+$mens = $control['mens'];
+$voteg = $control['voteg'];
+
+
+
+
+if (isset($_GET['token'])) {
+    $token = $_GET['token'];
+    verifUser($token);
+}
+
+if (!isset($_SESSION['id'])) {
+    header('location', 'login.php');
+}
+
+foreach ($erros3 as $erros3){
+    echo $erros3;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -18,9 +44,8 @@ require_once '../control/conexao.php';
         <table class="header">
             <tr>
                 <td class="bord"><img src="../img/logo2.png" alt="logo" class="logo"></td>
-                <td><p class="titulo">CinIF - Votação</p></td>
-                <td class="navbg">
-                    <table>
+                <td><p class="titulo">CinIF</p></td>
+                    <table class="navbg">
                     <tr>
                     <td class="bord"><a href="../back/voteg.php"><button class="navops">Gêneros</button>
                     <div class="seta"></div>
@@ -29,53 +54,89 @@ require_once '../control/conexao.php';
                     <td class="bord"><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
                     </tr>
                     </table>
-
-                </td>
             </tr>
         </table>
         <div class="balao">
             <p class="balaot">Os filmes presentes na próxima votação serão do gênero no topo da lista!</p>
         </div>
 
-        <?php
-        $sql = "SELECT * FROM genero WHERE numerogenero>0 ORDER BY numerovotosg DESC;";
-        $result1 = mysqli_query($conexao, $sql);
-        $resultnum = mysqli_num_rows($result1);
-        $row = mysqli_fetch_assoc($result1)
-        ?>
 
 
 
-        <?php if ($resultnum > 0): ?>
-        <div class="contcard">
-            
-            <form method="POST" action="voteg.php" class="cardprim">
-                <img src="../img/botaov.png" class="voteb" alt="votar">
-                <p class="numv"><?php echo $row['numerovotog']; ?></p>
-                <p class="cardt"><?php echo $row['nomegenro']; ?></p>
-            </form>
-            
-            
-            <?php while ($row = mysqli_fetch_assoc($result1)):?>
-            
-                <form method="POST" action="voteg.php" class="card">
-                    <img src="../img/botaov.png" class="voteb" alt="votar">
-                    <p class="numv"><?php echo $i; ?></p>
-                    <p class="cardt">texto aaaaaaaaa</p>
+
+        <div class="descd">
+            <img src="../img/inf.png" class="inf">
+            <p><?php echo $mens;?></p>
+        </div>
+
+        <div class="descm">
+            <p><?php echo $mens;?></p>
+        </div>
+
+
+
+        <?php if ($control['voteg'] == 1):?>
+
+            <?php
+            $sql = "SELECT * FROM genero WHERE numgenero>0 ORDER BY numvotosg DESC;";
+            $result = mysqli_query($conexao, $sql);
+            $resultnum = mysqli_num_rows($result);
+            $row = mysqli_fetch_assoc($result);    
+            ?>
+
+
+
+            <?php if ($resultnum > 0): ?>
+                
+            <div class="contcard">
+                <form method="POST" action="voteg.php" 
+                <?php if ( $row['numvotosg'] < 1) {
+                    echo 'class="card"';
+                }else
+                    echo 'class="cardprim"';?>
+                >
+                    <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>">
+                    <input type="hidden" name="nomegenero" value="<?php echo $row['nomegenero'];?>">
+                    <button type="submit" alt="votar" name="votar" style="background-color: transparent; border: none;">
+                        <img src="../img/botaov.png" class="voteb">
+                    </button>
+                    <p class="numv"><?php echo $row['numvotosg']; ?></p>
+                    <p class="cardt"><?php echo $row['nomegenero'] ?></p>
                 </form>
-            <?php endwhile; ?>
+                
+                
+                <?php while ($row = mysqli_fetch_assoc($result)):?>
+                
+                    <form method="POST" action="voteg.php" class="card">
+                        <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>">
+                        <input type="hidden" name="nomegenero" value="<?php echo $row['nomegenero'];?>">
+                        <button type="submit" alt="votar" name="votar" style="background-color: transparent; border: none;">
+                            <img src="../img/botaov.png" class="voteb">
+                        </button>
+                        <p class="numv"><?php echo $row['numvotosg']; ?></p>
+                        <p class="cardt"><?php echo $row['nomegenero'] ?></p>
+                    </form>
+
+                <?php endwhile; ?>
+            </div>
+                
+            <?php else:?>
+
+                <div class="nof">
+                    <img src="../img/inf.png" class="noimg" alt="">
+                    <p>A votação de gêneros só acontece quando há certa diversidade de filmes no cadastrados, vá na aba "Catálogo" para adicionar os filmes de sua preferência.</p>
+                </div>
+                
+            <?php endif;?>
         <?php else:?>
+
             <div class="nof">
                 <img src="../img/inf.png" class="noimg" alt="">
-                <p>Nenhum filme foi sugerido recentemente</p>
+                <p>A votação ainda não começou.</p>
             </div>
+
         <?php endif;?>
-         </div>
-
-
-
-
-
+            
 
     </div>
 </body>

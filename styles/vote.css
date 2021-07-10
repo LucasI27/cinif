@@ -52,6 +52,9 @@ body{
         width: 100%;
         border-radius: 0vw 0vw 1.5vh 1.5vh;
         box-shadow: 0px 0.5vh 5px rgb(80, 80, 80);
+        display: flex;
+        flex-direction: column;
+        height: 23vh;
     }
 
     .logo{
@@ -70,7 +73,7 @@ body{
     .balao{
         text-align: center;
         position: relative;
-        top: 1.5vh;
+        top: 4vh;
         padding: 0.1vh;
         background-color: var(--acc);
         border-radius: 3vw;
@@ -79,24 +82,19 @@ body{
         margin: auto;
     }
 
+
     .descd{
         display: none;
     }
 
     .descm{
-        color: #C7C7C7;
-        font-size: 5vw;
+        color: #757575;
+        font-size: 1rem;
         text-align: center;
-        margin: 4vh;
+        margin-top: 6.5vh;
     }
 
-    .bannerm{
-        width: 100%;
-        height: auto;
-    }
-    .bannerd{
-        display: none;
-    }
+
     .balaot{
         margin: 3vw;
         position: relative;
@@ -104,29 +102,135 @@ body{
     }
     
     .seta{
-        right: 10vw;
+        top: 22vh;
+        margin-left: 4vh;
         position: fixed;
         width: 0vw; 
         height: 0vw; 
-        border-left: 4vw solid transparent;
-        border-right: 4vw solid transparent;
-        border-bottom: 4vw solid var(--acc);
+        border-left: 5.5vw solid transparent;
+        border-right: 5.5vw solid transparent;
+        border-bottom: 7vw solid var(--acc);
     }
-    .loginb{
-        border-radius: 1vh;
+
+    .navbg{
+        background-color: #2D2E2E;
+        padding: 1vh;
+        border-radius: 2vh;
+        margin-top: -12vh;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row-reverse;
+        width: 93%;
+    }
+
+    .navop{
         border: none;
-        height: min(20%, 100px);
-        font-size: 1.5rem;
-        font-family:Product Sans ;
+        font-size: 6.5vw;
+        background-color: transparent;
+        color: white;
+        border-radius: 1vh;
+        height: 7vh;
+        transition-duration: 0.25s;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+
+    .navops{
+        border: none;
+        font-size: 6.5vw;
         background-color: var(--acc);
         color: white;
+        border-radius: 1vh;
+        height: 7vh;
+        transition-duration: 0.25s;
         cursor: pointer;
-        transition: background-color .75s;
-        word-break: normal;
+        font-weight: bold;
     }
+
+
+
+
+    .navop:hover{
+        color: var(--acc);
+        filter: brightness(120%);
+        background-color: var(--bg);
+    }
+
+
     .bord{
         width: 25%;
     }
+
+    .contcard{
+        margin-top: 0vh;
+    }
+
+    .card{
+        padding: 2vh;
+        border-radius: 2vh;
+        margin-bottom: 1.5vh;
+        width: 86%;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: var(--bg);
+        box-shadow: 0px 0vh 5px rgb(80, 80, 80);
+        display: flex;
+        flex-direction: row-reverse;
+        transition-duration: 0.25s;
+    }
+
+
+        .cardprim{
+        border: solid 1vh var(--acc);
+        padding: 1vh;
+        border-radius: 2vh;
+        margin-bottom: 1.5vh;
+        width: 86%;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: var(--bg);
+        box-shadow: 0px 0vh 5px rgb(80, 80, 80);
+        display: flex;
+        flex-direction: row-reverse;
+        transition-duration: 0.25s;
+        font-weight: bold;
+    }
+
+    .cardt{
+        color: var(--texto);
+        text-align: left;
+        width: 100%;
+        font-size: 1.7rem;
+        margin: auto;
+    }
+
+    .card:hover{
+        background-color: #222425;
+    }
+
+    .voteb{
+        width: 7vh;
+        height: 7vh;
+        cursor: pointer;
+        transition-duration: 0.25s;
+        margin: auto;
+    }
+
+    .voteb:hover{
+        filter: brightness(150%);
+        width: 10vh;
+        height: 10vh;
+    }
+
+    .numv{
+        color: var(--texto);
+        margin: auto;
+        margin-right: 1vh;
+        font-size: 2rem;
+    }
+
 
     .nof{
         position: absolute;
@@ -168,19 +272,7 @@ body{
         font-weight: bold;
         margin: 3vh;
     }
-    .descm{
-        display: none;
-    }
-    .descd{
-        position: fixed;
-        border: 10px;
-        text-align: left;
-        right: 6vw;
-        top: min(32vw, 1486px);
-        color: rgb(199, 199, 199);
-        font-size: 2vw;
-        width: 27vw;
-    }
+
     .posm{
         display: none;
     }
@@ -192,7 +284,7 @@ body{
     }
     .balao{
         top: 19%;
-        right: 2vw;
+        right: 1vw;
         margin-right: 1vh;
         position: fixed;
         text-align: center;
@@ -200,6 +292,26 @@ body{
         border-radius: 1vw;
         color: white; 
         width:30vw; 
+    }
+
+    .descm{
+        display: none;
+    }
+    .descd{
+        position: fixed;
+        text-align: center;
+        right: 4vw;
+        top: min(57vh, 1486px);
+        color: rgb(124, 124, 124);
+        font-size: 1.7vw;
+        width: 27vw;
+    }
+
+    
+    .inf{
+        margin: 1vh;
+        width: 5vh;
+        height: auto;
     }
 
     .loginb{
@@ -255,6 +367,7 @@ body{
         width: auto;
         position: fixed;
         right: 0;
+        top: 1vh;
     }
 
     .navop{

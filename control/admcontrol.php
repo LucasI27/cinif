@@ -98,3 +98,59 @@ if (isset($_POST['apagar'])) {
         $sucesso = 'Filme adicionado com sucesso';
     }
 }
+
+$voteg = '';
+
+if (isset($_POST['voteini'])) {
+
+    if (empty($_POST['mens'])) {
+        $erros3['mens'] = 'Insira uma mensagem para iniciar a votação, de preferência o local e hora de exibição';
+    }
+    
+
+    
+    if (count($erros3) === 0){
+        $voteg =1;
+        $mens = $_POST['mens'];
+        $sql = "UPDATE users SET numvg = 1;";
+        $stmt = $conexao->prepare($sql);
+        if (!$conexao->query($sql)) {
+            $erros3['bd'] = mysqli_error($conexao);
+        }
+        $sql = "UPDATE control SET voteg='$voteg', mens='$mens'";
+        $stmt1 = $conexao->prepare($sql);
+        if (!$conexao->query($sql)) {
+            $erros2['bd'] = mysqli_error($conexao);
+
+        }  
+
+        $sql = "UPDATE genero SET numvotosg=0";
+        $stmt1 = $conexao->prepare($sql);
+        if (!$conexao->query($sql)) {
+            $erros2['bd'] = mysqli_error($conexao);
+
+        } 
+    }
+
+}
+
+if (isset($_POST['voteter'])) {
+
+    $sql = "SELECT mens FROM control;";
+    $result = mysqli_query($conexao, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $mens = $row['mens'];
+
+    $voteg =0;
+    $mens .= '
+    
+    
+    As votações já terminaram, o filme exibido será:';
+    $sql = "UPDATE control SET voteg='$voteg', mens='$mens'";
+    $stmt1 = $conexao->prepare($sql);
+    if (!$conexao->query($sql)) {
+        $erros2['bd'] = mysqli_error($conexao);
+
+    }  
+}
+

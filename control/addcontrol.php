@@ -24,7 +24,7 @@ if (isset($_POST['tempb'])){
         $erros2['titulo'] = 'Nunca vi um filme sem título, coloca alguma coisa aí ;)';
     }
     
-    if (empty($sinopse OR $sinopse = 'NULL')){
+    if (empty($sinopse)){
         $sinopse = 'não foi fornecido';
     }
 
