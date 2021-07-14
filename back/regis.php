@@ -33,16 +33,17 @@
         <?php endif; ?>
 
 
+        <div class="i">
 
-        <form action="regis.php" method="post" class="form">
-            <h2 class="tituloform">Cadastro</h3>
-            <div>
-                <label class="label" for="user">Nome de usuário</label>
-                <br>
-                <input type="text" name="user" value="<?php echo $user; ?>" class="campo">
-            </div>
-            
-            <div>
+            <form action="regis.php" method="post" class="form">
+                <h2 class="tituloform">Cadastro</h3>
+                <div>
+                    <label class="label" for="user">Nome de usuário</label>
+                    <br>
+                    <input type="text" name="user" value="<?php echo $user; ?>" class="campo">
+                </div>
+                
+                <div>
                 <label class="label" for="email">Email</label>
                 <br>
                 <input type="email" name="email" class="campo">
@@ -65,7 +66,8 @@
             </div>
         </form>
         
-
+    </div>
+        
     </div>
 </body>
 </html>

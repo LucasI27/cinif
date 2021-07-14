@@ -13,6 +13,25 @@ body{
 }
 
 
+::-webkit-scrollbar-track
+{
+	border: 5px solid var(--bg);
+	border-color: transparent;
+	background-color: var(--bg);
+}
+
+::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #dfe6e9;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: var(--acc);
+	border-radius: 10px;
+}
+
 
 
 

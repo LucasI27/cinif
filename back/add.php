@@ -66,16 +66,16 @@
                 <br>
                 <select name="genero" class="dropdown-select" >
                 <option value="NULL" selected>Selecione um genero</option>
-                <option value="romance" class="select">Romance</option>
-                <option value="suspense">Suspense</option>
-                <option value="terror">Terror</option>
-                <option value="drama">Drama</option>
-                <option value="comédia">Comédia</option>
-                <option value="musical">Musical</option>
-                <option value="animaçao">Animação</option>
-                <option value="ficcao">Ficção</option>
-                <option value="documentario">Documentário</option>
-                <option value="acao">Ação</option>
+                <option value="Romance" class="select">Romance</option>
+                <option value="Suspense">Suspense</option>
+                <option value="Terror">Terror</option>
+                <option value="Drama">Drama</option>
+                <option value="Comédia">Comédia</option>
+                <option value="Musical">Musical</option>
+                <option value="Animação">Animação</option>
+                <option value="Ficção">Ficção</option>
+                <option value="Documentário">Documentário</option>
+                <option value="Ação">Ação</option>
                 </select>
             </div>
             

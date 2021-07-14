@@ -99,7 +99,10 @@ if (isset($_POST['apagar'])) {
     }
 }
 
-$voteg = '';
+
+
+
+
 
 if (isset($_POST['voteini'])) {
 
@@ -110,47 +113,130 @@ if (isset($_POST['voteini'])) {
 
     
     if (count($erros3) === 0){
-        $voteg =1;
+ 
+
+        
+        
         $mens = $_POST['mens'];
-        $sql = "UPDATE users SET numvg = 1;";
+        $sql = "UPDATE users SET numvg = 1, numvf = 1;";
         $stmt = $conexao->prepare($sql);
         if (!$conexao->query($sql)) {
             $erros3['bd'] = mysqli_error($conexao);
         }
-        $sql = "UPDATE control SET voteg='$voteg', mens='$mens'";
+        $sql = "UPDATE controle SET voteg=1, votef=1, mens='$mens';";
         $stmt1 = $conexao->prepare($sql);
         if (!$conexao->query($sql)) {
-            $erros2['bd'] = mysqli_error($conexao);
+            $erros3['bd'] = mysqli_error($conexao);
 
         }  
 
         $sql = "UPDATE genero SET numvotosg=0";
         $stmt1 = $conexao->prepare($sql);
         if (!$conexao->query($sql)) {
-            $erros2['bd'] = mysqli_error($conexao);
+            $erros3['bd'] = mysqli_error($conexao);
 
         } 
+
+        $sql = "UPDATE catal SET numvotosf=0";
+        $stmt1 = $conexao->prepare($sql);
+        if (!$conexao->query($sql)) {
+            $erros3['bd'] = mysqli_error($conexao);
+
+        } 
+
+
     }
 
 }
 
+
+
+
+
 if (isset($_POST['voteter'])) {
 
-    $sql = "SELECT mens FROM control;";
+
+
+    //GENERO VENCEDOR
+    $sql = "SELECT * FROM genero WHERE numvotosg = (SELECT MAX(numvotosg) FROM GENERO LIMIT 1) LIMIT 1;";
+    $result = mysqli_query($conexao, $sql);
+    $maxg = mysqli_fetch_assoc($result);
+    $nomevencedorg = $maxg['nomegenero'];
+
+    $sql = "SELECT numvotosg FROM genero;";
     $result = mysqli_query($conexao, $sql);
     $row = mysqli_fetch_assoc($result);
-    $mens = $row['mens'];
+    while ($row = mysqli_fetch_assoc($result)){
+        if ($row['numvotosg'] > 0) {            
+            $sql = "UPDATE genero SET vencedor=1 WHERE nomegenero='$nomevencedorg';";
+            $stmt1 = $conexao->prepare($sql);
+            if (!$conexao->query($sql)) {
+                $erros3['bd'] = mysqli_error($conexao);
+            } 
+        }
+    }
 
-    $voteg =0;
-    $mens .= '
-    
-    
-    As votações já terminaram, o filme exibido será:';
-    $sql = "UPDATE control SET voteg='$voteg', mens='$mens'";
+    //------------------------------------------
+
+    //FILME VENCEDOR
+    $sql = "SELECT * FROM catal WHERE numvotosf = (SELECT MAX(numvotosf) FROM catal LIMIT 1) LIMIT 1;";
+    $result = mysqli_query($conexao, $sql);
+    if (!$conexao->query($sql)) {
+        $erros3['bd'] = mysqli_error($conexao);
+    }
+
+    $maxf = mysqli_fetch_assoc($result);
+    $nomevencedorf = $maxf['titulo'];
+
+    $sql = "UPDATE catal SET exib=1 WHERE titulo='$nomevencedorf';";
     $stmt1 = $conexao->prepare($sql);
     if (!$conexao->query($sql)) {
-        $erros2['bd'] = mysqli_error($conexao);
+        $erros3['bd'] = mysqli_error($conexao);
+    } 
 
-    }  
+    $sql = "UPDATE genero SET numgenero=numgenero-1 WHERE nomegenero=(SELECT genero FROM catal WHERE titulo='$nomevencedorf' LIMIT 1);";
+    $stmt1 = $conexao->prepare($sql);
+    if (!$conexao->query($sql)) {
+        $erros3['bd'] = mysqli_error($conexao);
+    } 
+    //-------------------------------------------
+
+
+
+    $sql = "SELECT mens FROM controle;";
+    $result = mysqli_query($conexao, $sql);
+    $row = mysqli_fetch_assoc($result);
+    if (!$conexao->query($sql)) {
+       echo $erros3['bd'] = mysqli_error($conexao);
+    } 
+
+    $mens = $row['mens'];
+    $mens .= " As votações já terminaram, o filme exibido será $nomevencedorf";
+
+
+    $sql = "UPDATE controle SET voteg=0, votef=0, mens='$mens'";
+    $stmt1 = $conexao->prepare($sql);
+    if (!$conexao->query($sql)) {
+        $erros3['bd'] = mysqli_error($conexao);
+
+    }
+
+    
+    $sql = "UPDATE controle SET vencedorg=(SELECT nomegenero FROM genero WHERE vencedor=1);";
+    $stmt1 = $conexao->prepare($sql);
+    if (!$conexao->query($sql)) {
+        $erros3['bd'] = mysqli_error($conexao);
+    }
+
+    $sql = "UPDATE genero SET vencedor=0;";
+    $stmt1 = $conexao->prepare($sql);
+    if (!$conexao->query($sql)) {
+        $erros3['bd'] = mysqli_error($conexao);
+    } 
+
+
+
+
+
 }
 

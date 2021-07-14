@@ -1,7 +1,7 @@
 <?php
  require_once '../control/admcontrol.php';
  require_once '../control/conexao.php';
- $sql = "SELECT voteg FROM control;";
+ $sql = "SELECT voteg FROM controle;";
  $result = mysqli_query($conexao, $sql);
  $row = mysqli_fetch_assoc($result);  
 
@@ -92,83 +92,83 @@
                         
                         
                         
-                        <option value="romance"
-                        <?php if ($row["genero"] === "romance"){
+                        <option value="Romance"
+                        <?php if ($row["genero"] === "Romance"){
                             echo "selected";
                         } ?>
                         >Romance</option>
 
 
 
-                        <option value="suspense" 
-                        <?php if ($row["genero"] === "suspense"){
+                        <option value="Suspense" 
+                        <?php if ($row["genero"] === "Suspense"){
                             echo "selected";
                         } ?>
                         >Suspense</option>
 
 
 
-                        <option value="terror" 
-                        <?php if ($row["genero"] === "terror"){
+                        <option value="Terror" 
+                        <?php if ($row["genero"] === "Terror"){
                             echo "selected";
                         } ?>
                         >Terror</option>
 
 
 
-                        <option value="drama" 
-                        <?php if ($row["genero"] === "drama"){
+                        <option value="Drama" 
+                        <?php if ($row["genero"] === "Drama"){
                             echo "selected";
                         } ?>
                         >Drama</option>
 
 
 
-                        <option value="comédia"
-                        <?php if ($row["genero"] === "comédia"){
+                        <option value="Comédia"
+                        <?php if ($row["genero"] === "Comédia"){
                             echo "selected";
                         } ?>
                         >Comédia</option>
 
 
 
-                        <option value="musical"
-                        <?php if ($row["genero"] === "musical"){
+                        <option value="Musical"
+                        <?php if ($row["genero"] === "Musical"){
                             echo "selected";
                         } ?>
                         >Musical</option>
 
 
 
-                        <option value="animaçao" 
-                        <?php if ($row["genero"] === "animaçao"){
+                        <option value="Animação" 
+                        <?php if ($row["genero"] === "Animação"){
                             echo "selected";
                         } ?>
                         >Animação</option>
 
 
 
-                        <option value="ficcao" 
-                        <?php if ($row["genero"] === "ficcao"){
+                        <option value="Ficção" 
+                        <?php if ($row["genero"] === "Ficção"){
                             echo "selected";
                         } ?>
                         >Ficção</option>
 
 
 
-                        <option value="documentario" 
-                        <?php if ($row["genero"] === "documentario"){
+                        <option value="Documentário" 
+                        <?php if ($row["genero"] === "Documentário"){
                             echo "selected";
                         } ?>
                         >Documentário</option>
 
 
 
-                        <option value="acao" 
-                        <?php if ($row["genero"] === "acao"){
+                        <option value="Ação" 
+                        <?php if ($row["genero"] === "Ação"){
                             echo "selected";
                         } ?>
-                        >ação</option>
+                        >Ação</option>
                         </select>
                     </div>
                     

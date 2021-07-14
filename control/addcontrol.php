@@ -41,6 +41,11 @@ if (isset($_POST['tempb'])){
     }
 
 
+    if ($genero === 'NULL') {
+        $erros2['genero'] = 'Nosso site precisa de um gênero para separar os filmes em categorias.';
+    }
+
+
     if (count($erros2) === 0) {
         $sql = "INSERT INTO catal (titulo, genero, sinopse, exib, valid) VALUES ('$titulo', '$genero', '$sinopse', '$exib', '$valid')";
         $stmt1 = $conexao->prepare($sql);

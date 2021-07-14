@@ -32,6 +32,7 @@
             </div>
         <?php endif; ?>
     </div>
+    <div class="i">
         <form action="login.php" method="post" class="form">
             <h2 class="tituloform">Login</h3>
             <div>
@@ -39,16 +40,17 @@
                 <br>
                 <input type="text" name="user" value="<?php echo $user; ?>" class="campo">
             </div>
-
+            
             <div>
                 <label class="label" for="password">Senha</label>
                 <br>            
                 <input type="password" name="password" class="campo">
             </div>
-      
+            
             <div>
-            <button name="loginb" class="envb" type="submit">Enviar</button>
+                <button name="loginb" class="envb" type="submit">Enviar</button>
             </div>
         </form>
+    </div>
 </body>
 </html>

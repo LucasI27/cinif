@@ -109,14 +109,14 @@ body{
         color: #757575;
         font-size: 1rem;
         text-align: center;
-        margin-top: 6.5vh;
+        padding: 1vh;
+        margin-top: 2vh;
     }
 
 
     .balaot{
         margin: 3vw;
-        position: relative;
-        font-size: 1.1rem;
+        font-size: 2vh;
     }
     
     .seta{
@@ -228,49 +228,102 @@ body{
         font-weight: bold;
     }
 
+    .flx{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .collapsible {
+        cursor: pointer;
+        width: 10vh;
+        background-color: transparent;
+        border: none;
+        margin-top: -17vh;
+        left: 1vw;
+    }
+
+
+    .set{
+        width: 7vh;
+        height: auto;
+    }
+
+    
+    .content {
+        position: relative;
+        padding: 0 18px;
+        margin-left: 2vh;
+        width: 79vw;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        color: var(--texto);
+        font-weight: normal;
+    }
+
+
+
+
+
+    .crop{
+        object-fit: cover;
+        object-position: center;
+        height: 100px;
+        width: 100px;
+        border-radius: 2vh;
+    }
+
+
+    
     .cardt{
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        margin-left: 20vh;
+        width: 100%;
         color: var(--texto);
         text-align: left;
-        width: 100%;
-        font-size: 1.7rem;
-        margin: auto;
+        font-size: 2rem;
+
     }
 
     .card:hover{
         background-color: #222425;
     }
 
+    .titsin{
+        font-weight: bold;
+        color: #25bb7f;
+    }
+
     .voteb{
-        width: 7vh;
-        height: 7vh;
+        width: 9vh;
+        height: 9vh;
         cursor: pointer;
         transition-duration: 0.25s;
         margin: auto;
+        position: relative;
+
     }
 
     .voteb:hover{
         filter: brightness(150%);
         width: 10vh;
         height: 10vh;
+        margin-top: auto;
+        margin-bottom: auto;
+
     }
 
     .numv{
+        margin-top: auto;
+        margin-bottom: auto;
         color: var(--texto);
         margin: auto;
-        margin-right: 1vh;
+        margin-right: 3vh;
         font-size: 2rem;
     }
 
-
-    .nof{
-        position: absolute;
-        width: 100%;
-        top: 55vh;
-
-        
-        text-align: center;
-        color: var(--texto);
-    }
     
     .noimg{
         width: 5vh;
@@ -371,7 +424,6 @@ body{
     .header{
         background-color:var(--bg);
         width: 100%;
-        position: fixed;
         left: 0;
         top: 0;
         border-radius: 0vw 0vw 1.1vw 1.1vw;
@@ -441,8 +493,9 @@ body{
     }
 
     .contcard{
-        margin-top: 20vh;
+        margin-top: 2vh;
     }
+
 
     .card{
         padding: 2vh;
@@ -452,13 +505,11 @@ body{
         width: 63vw;
         background-color: var(--bg);
         box-shadow: 0px 0vh 5px rgb(80, 80, 80);
-        display: flex;
-        flex-direction: row-reverse;
         transition-duration: 0.25s;
     }
 
 
-        .cardprim{
+    .cardprim{
         border: solid 1vh var(--acc);
         padding: 1vh;
         border-radius: 2vh;
@@ -467,34 +518,75 @@ body{
         width: 63vw;
         background-color: var(--bg);
         box-shadow: 0px 0vh 5px rgb(80, 80, 80);
-        display: flex;
-        flex-direction: row-reverse;
         transition-duration: 0.25s;
         font-weight: bold;
     }
 
-    .imgcard{
-        margin-top: auto;
-        margin-bottom: auto;
-        margin-right: 4vh;
-        object-fit:cover;
-        object-position: center;
-        height: 15vh;
-        width: 25vh;
-        border-radius: 1.5vh;
+    .flx{
+        margin-left: 20vh;
+        margin-top: 3.5vh;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .collapsible {
+        cursor: pointer;
+        width: 10vh;
+        background-color: transparent;
+        border: none;
+        margin-top: -15vh;
+        left: 1vw;
+    }
+
+
+    .set{
+        width: 7vh;
+        height: auto;
     }
 
     
+    .content {
+        padding: 0 18px;
+        width: 59vw;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        color: var(--texto);
+        font-weight: normal;
+    }
+
+
+
+
+
+    .crop{
+        object-fit: cover;
+        object-position: center;
+        height: 100px;
+        width: 100px;
+        border-radius: 2vh;
+    }
+
+
+    
     .cardt{
+        margin-bottom: auto;
+        margin-top: auto ;
+        width: 100%;
         color: var(--texto);
         text-align: left;
-        width: 100%;
         font-size: 2rem;
-        margin: auto;
     }
 
     .card:hover{
         background-color: #222425;
+    }
+
+    .titsin{
+        font-weight: bold;
+        color: #25bb7f;
     }
 
     .voteb{
@@ -503,15 +595,20 @@ body{
         cursor: pointer;
         transition-duration: 0.25s;
         margin: auto;
+        position: relative;
+
     }
 
     .voteb:hover{
         filter: brightness(150%);
-        width: 10vh;
-        height: 10vh;
+        margin-top: auto;
+        margin-bottom: auto;
+
     }
 
     .numv{
+        margin-top: auto;
+        margin-bottom: auto;
         color: var(--texto);
         margin: auto;
         margin-right: 3vh;

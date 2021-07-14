@@ -3,11 +3,12 @@ require '../control/conexao.php';
 require_once '../control/autcontrol.php';
 require_once '../control/votecontrol.php';
 
-$sql = "SELECT * FROM control";
+$sql = "SELECT * FROM controle";
 $result = mysqli_query($conexao, $sql);
-$control = mysqli_fetch_assoc($result);
-$mens = $control['mens'];
-$voteg = $control['voteg'];
+$controle = mysqli_fetch_assoc($result);
+$mens = $controle['mens'];
+$voteg = $controle['voteg'];
+
 
 
 
@@ -45,17 +46,17 @@ foreach ($erros3 as $erros3){
             <tr>
                 <td class="bord"><img src="../img/logo2.png" alt="logo" class="logo"></td>
                 <td><p class="titulo">CinIF</p></td>
-                    <table class="navbg">
-                    <tr>
-                    <td class="bord"><a href="../back/voteg.php"><button class="navops">Gêneros</button>
-                    <div class="seta"></div>
-                    </td>
-                    <td class="bord"><a href="../back/votef.php"><button class="navop">Filmes</button></td>
-                    <td class="bord"><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
-                    </tr>
+                    <table class="align">
+                        <tr class="navbg">
+                            <td class="bord"><a href="../back/voteg.php"><button class="navops">Gêneros</button>
+                                <div class="seta"></div>
+                            </td>
+                            <td class="bord"><a href="../back/votef.php"><button class="navop">Filmes</button></td>
+                            <td class="bord"><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
+                        </tr>
                     </table>
-            </tr>
-        </table>
+                </tr>
+            </table>
         <div class="balao">
             <p class="balaot">Os filmes presentes na próxima votação serão do gênero no topo da lista!</p>
         </div>
@@ -75,10 +76,10 @@ foreach ($erros3 as $erros3){
 
 
 
-        <?php if ($control['voteg'] == 1):?>
+        <?php if ($controle['voteg'] == 1):?>
 
             <?php
-            $sql = "SELECT * FROM genero WHERE numgenero>0 ORDER BY numvotosg DESC;";
+            $sql = "SELECT * FROM genero WHERE numgenero>2 ORDER BY numvotosg DESC;";
             $result = mysqli_query($conexao, $sql);
             $resultnum = mysqli_num_rows($result);
             $row = mysqli_fetch_assoc($result);    
@@ -86,7 +87,7 @@ foreach ($erros3 as $erros3){
 
 
 
-            <?php if ($resultnum > 0): ?>
+            <?php if ($resultnum > 1): ?>
                 
             <div class="contcard">
                 <form method="POST" action="voteg.php" 
@@ -95,7 +96,6 @@ foreach ($erros3 as $erros3){
                 }else
                     echo 'class="cardprim"';?>
                 >
-                    <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>">
                     <input type="hidden" name="nomegenero" value="<?php echo $row['nomegenero'];?>">
                     <button type="submit" alt="votar" name="votar" style="background-color: transparent; border: none;">
                         <img src="../img/botaov.png" class="voteb">
@@ -108,13 +108,13 @@ foreach ($erros3 as $erros3){
                 <?php while ($row = mysqli_fetch_assoc($result)):?>
                 
                     <form method="POST" action="voteg.php" class="card">
-                        <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>">
                         <input type="hidden" name="nomegenero" value="<?php echo $row['nomegenero'];?>">
                         <button type="submit" alt="votar" name="votar" style="background-color: transparent; border: none;">
                             <img src="../img/botaov.png" class="voteb">
                         </button>
                         <p class="numv"><?php echo $row['numvotosg']; ?></p>
                         <p class="cardt"><?php echo $row['nomegenero'] ?></p>
+
                     </form>
 
                 <?php endwhile; ?>

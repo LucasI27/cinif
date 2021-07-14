@@ -110,7 +110,7 @@ if (isset($_POST['loginb'])) {
             $_SESSION['verif'] = $usuario['verif'];
     
             $_SESSION['msg'] = 'Opa, iae! Bem vindo, antes de qualquer coisa, dê uma checada no seu email e volte aqui depois';
-            header('location: emailverif.php');
+            header('location: votef.php');
             exit();
         }else{
             $erros['errologin'] = 'tem alguma coisa errada aí';
