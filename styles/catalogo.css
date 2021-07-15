@@ -112,8 +112,6 @@ body{
     }
 
     .descm{
-        color: #757575;
-        font-size: 1rem;
         text-align: center;
         padding: 1vh;
         margin-top: 2vh;
@@ -142,6 +140,23 @@ body{
         justify-content: center;
         position: absolute;
         top: 11vh;
+    }
+
+
+    
+    .envb{
+        margin-top: 2vh;
+        margin-bottom: 2vh;
+        border-radius: 1.5vh;
+        border: none;
+        height: auto;
+        width: auto;
+        padding: 1vh;
+        font-size: 1.5rem;
+        background-color: var(--acc);
+        color: white;
+        cursor: pointer;
+        transition: 0.25s;
     }
 
 
@@ -262,8 +277,8 @@ body{
         border: none;
         position: absolute;
         margin-top: -8.5vh;
-        margin-left: 0vh;
-        opacity: 0%;
+        right: 7vw;
+        opacity: 100%;
     }
 
 
@@ -286,8 +301,8 @@ body{
     .crop{
         object-fit: cover;
         object-position: center;
-        height: 40px;
-        width: 180px;
+        height: 60px;
+        width: 100px;
         border-radius: 2vh;
     }
 
@@ -423,9 +438,7 @@ body{
         position: fixed;
         text-align: center;
         right: 4vw;
-        top: min(57vh, 1486px);
-        color: rgb(124, 124, 124);
-        font-size: 1.7vw;
+        bottom: 15vh;
         width: 27vw;
     }
 
@@ -437,7 +450,7 @@ body{
         height: auto;
     }
 
-    .loginb{
+    .envb{
         border-radius: 1.5vh;
         border: none;
         height: 8vh;
@@ -692,4 +705,4 @@ body{
     }
 
 
-}
+}   

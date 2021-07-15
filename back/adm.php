@@ -20,7 +20,7 @@
     <div class="flex">
         <table class="header">
             <tr>
-                <td class="bord"><img src="../img/logo2.png" alt="logo" class="logo"></td>
+                <td style="width: 10vh;"><a href="votef.php"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
                 <td><p class="titulo">CinIF</p></td>
             </tr>
         </table>
@@ -60,7 +60,7 @@
 
 
         <?php 
-        $sql = 'SELECT * FROM catal WHERE valid=0;';
+        $sql = 'SELECT * FROM catal WHERE valid=0 ORDER BY RAND();';
         $result = mysqli_query($conexao, $sql);
         $resultnum = mysqli_num_rows($result);
         ?>

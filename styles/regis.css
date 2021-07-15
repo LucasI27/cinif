@@ -343,7 +343,7 @@ textarea:hover{
     .nof{
         position: absolute;
         width: 20vh;
-        top: 50vh;
+        top: 70vh;
         left: calc(100% - 50% - 10vh);
         
         text-align: center;
@@ -441,6 +441,27 @@ textarea:hover{
         }
 
 
+        .gear{
+            width: 4vh;
+            height: auto;
+            position: relative;
+            margin-left: 1vh;
+            transition: 0.25s;
+        }
+    
+    
+        .titl{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    
+    
+        .gear:hover{
+            filter: brightness(150%);
+            width: 5vh;
+        }
+    
 }
 
     
@@ -821,6 +842,26 @@ textarea:hover{
         transition-duration: 0.25s;
     }
 
+    
+    .gear{
+        width: 7vh;
+        height: auto;
+        position: relative;
+        transition: 0.25s;
+    }
+
+
+    .titl{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+
+    .gear:hover{
+        filter: brightness(150%);
+        width: 8vh;
+    }
 
 
 

@@ -1,7 +1,7 @@
 <?php
 require '../control/conexao.php';
-require_once '../control/autcontrol.php';
-require_once '../control/votecontrol.php';
+require '../control/autcontrol.php';
+require '../control/votecontrol.php';
 
 $sql = "SELECT * FROM controle";
 $result = mysqli_query($conexao, $sql);
@@ -9,22 +9,10 @@ $controle = mysqli_fetch_assoc($result);
 $mens = $controle['mens'];
 
 
-
-
-
-
-if (isset($_GET['token'])) {
-    $token = $_GET['token'];
-    verifUser($token);
-}
-
 if (!isset($_SESSION['id'])) {
     header('location', 'login.php');
 }
 
-foreach ($erros3 as $erros3){
-    echo $erros3;
-}
 
 
 ?>
@@ -44,19 +32,23 @@ foreach ($erros3 as $erros3){
 
     <table class="header">
         <tr>
-            <td class="bord"><img src="../img/logo2.png" alt="logo" class="logo"></td>
-            <td><p class="titulo">CinIF</p></td>
-                <table class="align">
-                    <tr class="navbg">
-                        <td class="bord"><a href="../back/voteg.php"><button class="navop">Gêneros</button></td>
+            <td style="width: 10vh;"><a href="votef.php"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
+            <td class="titl"><p class="titulo">CinIF</p>
+            <?php if ($_SESSION["id"] == 1): ?>
+                <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
+            <?php endif; ?>
+            </td>
+            <table class="align">
+                <tr class="navbg">
+                    <td><a href="../back/voteg.php"><button class="navop">Gêneros</button></td>
 
-                        <td class="bord"><a href="../back/votef.php"><button class="navops">Filmes</button>
-                            <div class="seta"></div>
-                        </td>
-                        <td class="bord"><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
-                    </tr>
-                </table>
-            </tr>
+                    <td><a href="../back/votef.php"><button class="navops">Filmes</button>
+                        <div class="seta"></div>
+                    </td>
+                    <td><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
+                </tr>
+            </table>
+        </tr>
         </table>
     <div class="balao">
         <p class="balaot">O filme no topo da lista será exibido, vote na sua preferência e fique atento ao horário e local de exibição!</p>
@@ -115,21 +107,19 @@ foreach ($erros3 as $erros3){
                     }else
                         echo 'class="cardprim"';?>
                     >
-                    <table>
+                    <table class="bord">
                         <tr>
                             <td class="flx">
-                                
-                                
-                                
-                                
-                                
+
                                 <p class="cardt"><?php echo $row['titulo'] ?></p>
                                 
-                                <p class="numv"><?php echo $row['numvotosf']; ?></p>
-
-                                <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;">
-                                    <img src="../img/botaov.png" class="voteb">
-                                </button>
+                                <div class="votos">
+                                    <p class="numv"><?php echo $row['numvotosf']; ?></p>
+                                    
+                                    <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;">
+                                        <img src="../img/botaov.png" class="voteb">
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -174,18 +164,20 @@ foreach ($erros3 as $erros3){
                     <?php while ($row = mysqli_fetch_assoc($result)):?>
                     
                         <form method="POST" action="votef.php" class="card card-1">
-                            <table>
+                            <table class="bord">
                                 <tr>
                                     <td class="flx">
                                         
                                         <p class="cardt"><?php echo $row['titulo'] ?></p>
                                         
-                                        <p class="numv"><?php echo $row['numvotosf']; ?></p>
-
-
-                                        <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;">
-                                            <img src="../img/botaov.png" class="voteb">
-                                        </button>
+                                        <div class="votos">
+                                            
+                                            <p class="numv"><?php echo $row['numvotosf']; ?></p>
+                                            
+                                            <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;">
+                                                <img src="../img/botaov.png" class="voteb">
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>

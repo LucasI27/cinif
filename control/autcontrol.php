@@ -2,6 +2,7 @@
 
 session_start();
 
+
 require 'conexao.php';
 require_once 'emailcontrol.php';
 
@@ -70,7 +71,7 @@ if (isset($_POST['cadb'])){
             verificar_email($email, $token);
 
             $_SESSION['msg'] = 'Opa, iae! Bem vindo, antes de qualquer coisa, dê uma checada no seu email e volte aqui depois';
-            header('location: emailverif.php');
+            header('location: votef.php');
             exit();
         } else {
             $erros['db_error'] = 'molhou tudo ai no bd';
@@ -139,7 +140,7 @@ function verifUser($token){
             $_SESSION['verif'] = 1;
     
             $_SESSION['msg'] = 'Verificado!';
-            header('location: emailverif.php');
+            header('location: votef.php');
             exit();
         }
     }else{

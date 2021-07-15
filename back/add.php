@@ -1,5 +1,6 @@
 <?php
  require_once '../control/addcontrol.php';
+ require_once '../control/autcontrol.php';
 ?> 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,10 +15,14 @@
 </head>
 <body>
     <div class="flex">
-        <table class="header">
-            <tr>
-                <td class="bord"><img src="../img/logo2.png" alt="logo" class="logo"></td>
-                <td><p class="titulo">CinIF</p></td>
+    <table class="header">
+        <tr>
+            <td style="width: 10vh;"><a href="votef.php"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
+            <td class="titl"><p class="titulo">CinIF</p>
+            <?php if ($_SESSION["id"] == 1): ?>
+                <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
+            <?php endif; ?>
+            </td>
             </tr>
         </table>
         <?php if (count($erros2) > 0 AND !isset($erros2['sucesso'])): ?>
