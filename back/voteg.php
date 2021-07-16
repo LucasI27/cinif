@@ -12,15 +12,15 @@ $voteg = $controle['voteg'];
 
 
 
-
-if (isset($_GET['token'])) {
-    $token = $_GET['token'];
-    verifUser($token);
+if ($_SESSION['verif'] == 0) {
+    header('location: emailverif.php');
 }
+
 
 if (!isset($_SESSION['id'])) {
-    header('location', 'login.php');
+    header('location: login.php');
 }
+
 
 foreach ($erros3 as $erros3){
     echo $erros3;
@@ -42,10 +42,14 @@ foreach ($erros3 as $erros3){
 <body>
     <div class="flex">
 
-        <table class="header">
-            <tr>
-                <td class="bord"><img src="../img/logo2.png" alt="logo" class="logo"></td>
-                <td><p class="titulo">CinIF</p></td>
+    <table class="header">
+        <tr>
+            <td style="width: 10vh;"><a href="votef.php"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
+            <td class="titl"><p class="titulo">CinIF</p>
+            <?php if ($_SESSION["id"] == 1): ?>
+                <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
+            <?php endif; ?>
+            </td>
                     <table class="align">
                         <tr class="navbg">
                             <td class="bord"><a href="../back/voteg.php"><button class="navops">Gêneros</button>
@@ -139,5 +143,10 @@ foreach ($erros3 as $erros3){
             
 
     </div>
-</body>
+    
+    <form method='POST' class='sair'>
+        <input type="submit" name="logout" value="Sair">
+        <img src="../img/logout.png" alt="">
+    </form>
+</body> 
 </html>

@@ -33,7 +33,7 @@ function verificar_email($userEmail, $token){
 
 
   // Create a message
-  $message = (new Swift_Message('Opa, iae, Confirma seu email com o link abaixo S2'))
+  $message = (new Swift_Message('Opa, iae, Chega mais pra confirmar seu email'))
     ->setFrom(EMAIL)
     ->setTo($userEmail)
     ->setBody($body, 'text/html')

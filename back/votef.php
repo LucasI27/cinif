@@ -8,11 +8,14 @@ $result = mysqli_query($conexao, $sql);
 $controle = mysqli_fetch_assoc($result);
 $mens = $controle['mens'];
 
-
-if (!isset($_SESSION['id'])) {
-    header('location', 'login.php');
+if ($_SESSION['verif'] == 0) {
+    header('location: emailverif.php');
 }
 
+
+if (!isset($_SESSION['id'])) {
+    header('location: login.php');
+}
 
 
 ?>
@@ -229,7 +232,10 @@ if (!isset($_SESSION['id'])) {
 
     </div>
 
-
+    <form method='POST' action="votef.php" class='sair'>
+        <input type="submit" name="logout" value="Sair">
+        <img src="../img/logout.png" alt="">
+    </form>
 
 
 </body>

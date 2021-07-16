@@ -1,6 +1,16 @@
 <?php
  require_once '../control/addcontrol.php';
  require_once '../control/autcontrol.php';
+
+ if ($_SESSION['verif'] == 0) {
+    header('location: emailverif.php');
+}
+
+
+if (!isset($_SESSION['id'])) {
+    header('location: login.php');
+}
+
 ?> 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -99,5 +109,9 @@
         </form> 
         </div>
     </div>
+    <form method='POST' action="votef.php" class='sair'>
+        <input type="submit" name="logout" value="Sair">
+        <img src="../img/logout.png" alt="">
+    </form>
 </body>
 </html>

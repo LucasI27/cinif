@@ -14,7 +14,7 @@
 
         <table class="header">
             <tr>
-                <td class="bord"><img src="../img/logo2.png" alt="logo" class="logo"></td>
+                <td class="bord"><a href="../init.html"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
                 <td><p class="titulo">CinIF</p></td>
                 <td class="bord"><a href="regis.php"><button class="loginb">Registre</button></a></td>
             </tr>
@@ -32,6 +32,17 @@
             </div>
         <?php endif; ?>
     </div>
+
+        <div class="descdlog">
+            <img src="../img/inf.png" class="inf">
+            <p>Assim como o CinIF é um evento que ocorre exclusivamente para os alunos internos, este site é feito exclusivamente para ajuda-los</p>
+        </div>
+
+        <div class="descm">
+            <p>Assim como o CinIF é um evento que ocorre exclusivamente para os alunos internos, este site é feito exclusivamente para ajuda-los</p>
+        </div>
+
+
     <div class="i">
         <form action="login.php" method="post" class="form">
             <h2 class="tituloform">Login</h3>

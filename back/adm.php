@@ -1,9 +1,22 @@
 <?php
+require_once '../control/autcontrol.php';
  require_once '../control/admcontrol.php';
  require_once '../control/conexao.php';
  $sql = "SELECT voteg FROM controle;";
  $result = mysqli_query($conexao, $sql);
  $row = mysqli_fetch_assoc($result);  
+
+ 
+if (!isset($_SESSION['id']) or $_SESSION['id'] !== 1) {
+    header('location: login.php');
+}
+
+if ($_SESSION['verif'] == 0) {
+    header('location: emailverif.php');
+}
+
+
+
 
 ?> 
 <!DOCTYPE html>

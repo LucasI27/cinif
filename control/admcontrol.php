@@ -9,6 +9,8 @@ $sinopse = '';
 $sucesso = '';
 
 
+
+
 //adicionar a 'catal'
 
 
@@ -72,12 +74,20 @@ if(isset($_POST["catalogo"]) && !empty($_FILES["img"]["name"])){
         }else{
             $sucesso = 'Filme validado com sucesso';
         }
-        $sql = "UPDATE genero SET numgenero = numgenero+1 WHERE nomegenero='$genero';";
-        $stmt = $conexao->prepare($sql);
-        if (!$conexao->query($sql)) {
-            $erros3['bd'] = mysqli_error($conexao);
+        $sql = 'SELECT nomegenero FROM genero';
+        $result = mysqli_query($conexao, $sql);
+        while ($row = mysqli_fetch_assoc($result)){
+            $nomegenero = $row['nomegenero'];
+            $sql = "SELECT COUNT(*) AS num FROM catal WHERE exib=0 AND valid=1 AND genero='$nomegenero';";
+            $result1 = mysqli_query($conexao, $sql);
+            $row = mysqli_fetch_assoc($result1);
+            $num = $row['num'];
+            $sql = "UPDATE genero SET numgenero='$num' WHERE nomegenero='$nomegenero';";
+            $stmt1 = $conexao->prepare($sql);
+            if (!$conexao->query($sql)) {
+                $erros3['bd'] = mysqli_error($conexao);
+            }
         }
-
     }
 }
 
@@ -115,6 +125,21 @@ if (isset($_POST['voteini'])) {
     if (count($erros3) === 0){
  
 
+        $sql = 'SELECT nomegenero FROM genero';
+        $result = mysqli_query($conexao, $sql);
+        while ($row = mysqli_fetch_assoc($result)){
+            $nomegenero = $row['nomegenero'];
+            $sql = "SELECT COUNT(*) AS num FROM catal WHERE exib=0 AND valid=1 AND genero='$nomegenero';";
+            $result1 = mysqli_query($conexao, $sql);
+            $row = mysqli_fetch_assoc($result1);
+            $num = $row['num'];
+            $sql = "UPDATE genero SET numgenero='$num' WHERE nomegenero='$nomegenero';";
+            $stmt1 = $conexao->prepare($sql);
+            if (!$conexao->query($sql)) {
+                $erros3['bd'] = mysqli_error($conexao);
+            }
+        }
+    
         
         
         $mens = $_POST['mens'];
@@ -194,11 +219,23 @@ if (isset($_POST['voteter'])) {
         $erros3['bd'] = mysqli_error($conexao);
     } 
 
-    $sql = "UPDATE genero SET numgenero=numgenero-1 WHERE nomegenero=(SELECT genero FROM catal WHERE titulo='$nomevencedorf' LIMIT 1);";
-    $stmt1 = $conexao->prepare($sql);
-    if (!$conexao->query($sql)) {
-        $erros3['bd'] = mysqli_error($conexao);
-    } 
+
+
+    $sql = 'SELECT nomegenero FROM genero';
+    $result = mysqli_query($conexao, $sql);
+    while ($row = mysqli_fetch_assoc($result)){
+        $nomegenero = $row['nomegenero'];
+        $sql = "SELECT COUNT(*) AS num FROM catal WHERE exib=0 AND valid=1 AND genero='$nomegenero';";
+        $result1 = mysqli_query($conexao, $sql);
+        $row = mysqli_fetch_assoc($result1);
+        $num = $row['num'];
+        $sql = "UPDATE genero SET numgenero='$num' WHERE nomegenero='$nomegenero';";
+        $stmt1 = $conexao->prepare($sql);
+        if (!$conexao->query($sql)) {
+            $erros3['bd'] = mysqli_error($conexao);
+        }
+    }
+
     //-------------------------------------------
 
 

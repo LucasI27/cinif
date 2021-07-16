@@ -8,6 +8,8 @@
 
 }
 
+
+
 body{
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg);
@@ -157,6 +159,10 @@ body{
         color: white;
         cursor: pointer;
         transition: 0.25s;
+    }
+
+    .envb:hover{
+        filter: brightness(150%);
     }
 
 
@@ -383,6 +389,37 @@ body{
         width: 5vh;
     }
 
+
+    
+    .sair{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        top: 2vh;
+        right: 2vh;
+    }
+
+    .sair img{
+        display: none;
+    }
+
+    .sair input{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 1vh;
+        font-size: 1.3rem;
+        cursor: pointer;
+        background-color: var(--acc);
+        color: white;
+        transition: 0.25s;
+        font-weight: bold;
+    }
+
+    .sair input:hover{
+        filter: brightness(150%);
+    }
 }
 
     
@@ -438,7 +475,7 @@ body{
         position: fixed;
         text-align: center;
         right: 4vw;
-        bottom: 15vh;
+        bottom:20vh;
         width: 27vw;
     }
 
@@ -458,8 +495,12 @@ body{
         background-color: var(--acc);
         color: white;
         cursor: pointer;
-        transition: background-color 0.75s;
+        transition: 0.25s;
         word-break: keep-all;
+    }
+
+    .envb:hover{
+        filter: brightness(150%);
     }
 
     .logo{
@@ -582,7 +623,7 @@ body{
         width: 10vh;
         background-color: transparent;
         border: none;
-        margin-top: -15vh;
+        margin-top: -11vh;
         left: 1vw;
     }
 
@@ -705,4 +746,34 @@ body{
     }
 
 
+    .sair{
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        bottom: 2vh;
+        right: 2vh;
+    }
+
+    .sair img{
+        width: 5vh;
+        height: auto;
+        margin-left: 1vh;
+    }
+
+    .sair input{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 1vh;
+        font-size: 1.3rem;
+        cursor: pointer;
+        background-color: var(--acc);
+        color: white;
+        transition: 0.25s;
+    }
+
+    .sair input:hover{
+        filter: brightness(150%);
+    }
 }   

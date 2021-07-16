@@ -71,7 +71,7 @@ if (isset($_POST['cadb'])){
             verificar_email($email, $token);
 
             $_SESSION['msg'] = 'Opa, iae! Bem vindo, antes de qualquer coisa, dê uma checada no seu email e volte aqui depois';
-            header('location: votef.php');
+            header('location: emailverif.php');
             exit();
         } else {
             $erros['db_error'] = 'molhou tudo ai no bd';
@@ -147,3 +147,9 @@ function verifUser($token){
         echo 'Usuário não encontrado.';
     }
 }
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+}
+
+

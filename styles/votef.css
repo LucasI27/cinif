@@ -368,6 +368,37 @@ body{
         width: 5vh;
     }
 
+
+    .sair{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        top: 2vh;
+        right: 2vh;
+    }
+
+    .sair img{
+        display: none;
+    }
+
+    .sair input{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 1vh;
+        font-size: 1.3rem;
+        cursor: pointer;
+        background-color: var(--acc);
+        color: white;
+        transition: 0.25s;
+        font-weight: bold;
+    }
+
+    .sair input:hover{
+        filter: brightness(150%);
+    }
+
 }
 
     
@@ -423,7 +454,7 @@ body{
         position: fixed;
         text-align: center;
         right: 4vw;
-        top: min(57vh, 1486px);
+        top: 62vh;
         color: rgb(124, 124, 124);
         font-size: 1.7vw;
         width: 27vw;
@@ -435,18 +466,6 @@ body{
         margin-bottom: -2vh;
         width: 5vh;
         height: auto;
-    }
-
-    .loginb{
-        border-radius: 1.5vh;
-        border: none;
-        height: 8vh;
-        font-size: 5vh;
-        background-color: var(--acc);
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.75s;
-        word-break: keep-all;
     }
 
     .logo{
@@ -606,7 +625,7 @@ body{
     
     .cardt{
         margin-bottom: auto;
-        margin-top: auto ;
+        margin-top: 0 ;
         width: 100%;
         color: var(--texto);
         text-align: left;
@@ -689,6 +708,39 @@ body{
     .gear:hover{
         filter: brightness(150%);
         width: 8vh;
+    }
+
+
+    .sair{
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        bottom: 2vh;
+        right: 2vh;
+    }
+
+    .sair img{
+        width: 5vh;
+        height: auto;
+        margin-left: 1vh;
+    }
+
+    .sair input{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 1vh;
+        font-size: 1.3rem;
+        cursor: pointer;
+        background-color: var(--acc);
+        color: white;
+        transition: 0.25s;
+        font-weight: bold;
+    }
+
+    .sair input:hover{
+        filter: brightness(150%);
     }
 
 

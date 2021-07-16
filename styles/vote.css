@@ -109,7 +109,8 @@ body{
         color: #757575;
         font-size: 1rem;
         text-align: center;
-        margin-top: 6.5vh;
+        padding: 1vh;
+        margin-top: 2vh;
     }
 
 
@@ -277,6 +278,59 @@ body{
         height: auto;
     }
 
+
+    .gear{
+        width: 4vh;
+        height: auto;
+        position: relative;
+        margin-left: 1vh;
+        transition: 0.25s;
+    }
+
+
+    .titl{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+
+    .gear:hover{
+        filter: brightness(150%);
+        width: 5vh;
+    }
+
+
+    
+    .sair{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        top: 2vh;
+        right: 2vh;
+    }
+
+    .sair img{
+        display: none;
+    }
+
+    .sair input{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 1vh;
+        font-size: 1.3rem;
+        cursor: pointer;
+        background-color: var(--acc);
+        color: white;
+        transition: 0.25s;
+        font-weight: bold;
+    }
+
+    .sair input:hover{
+        filter: brightness(150%);
+    }
 }
 
     
@@ -526,10 +580,64 @@ body{
         text-align: center;
         color: var(--texto);
         }
+
         
-        .noimg{
-            width: 5vh;
-            height: auto;
-        }
+    .noimg{
+        width: 5vh;
+        height: auto;
+    }
+
+        
+    .gear{
+        width: 7vh;
+        height: auto;
+        position: relative;
+        transition: 0.25s;
+    }
+
+
+    .titl{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+
+    .gear:hover{
+        filter: brightness(150%);
+        width: 8vh;
+    }
+
+
+    .sair{
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        bottom: 2vh;
+        right: 2vh;
+    }
+
+    .sair img{
+        width: 5vh;
+        height: auto;
+        margin-left: 1vh;
+    }
+
+    .sair input{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 1vh;
+        font-size: 1.3rem;
+        cursor: pointer;
+        background-color: var(--acc);
+        color: white;
+        transition: 0.25s;
+    }
+
+    .sair input:hover{
+        filter: brightness(150%);
+    }
 
 }

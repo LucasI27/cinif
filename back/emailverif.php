@@ -6,9 +6,7 @@ if (isset($_GET['token'])) {
     verifUser($token);
 }
 
-if (!isset($_SESSION['id'])) {
-    header('location', 'login.php');
-}
+
 
 
 ?>
@@ -44,7 +42,7 @@ if (!isset($_SESSION['id'])) {
 
     <div class="aln">
         <?php if ($_SESSION['verif']):?>
-            <td><a href="login.php"><button class="verifb">Verificado</button></a></td>
+            <td><a href="votef.php"><button class="verifb">Verificado</button></a></td>
             <img class="em_v" src="../img/em_v.png">
             <?php else: ?>
             <img class="em_v" src="../img/em_x.png">

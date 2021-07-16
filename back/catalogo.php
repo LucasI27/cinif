@@ -9,21 +9,13 @@ $controle = mysqli_fetch_assoc($result);
 $mens = $controle['mens'];
 
 
-
-
-
-
-if (isset($_GET['token'])) {
-    $token = $_GET['token'];
-    verifUser($token);
+if ($_SESSION['verif'] == 0) {
+    header('location: emailverif.php');
 }
+
 
 if (!isset($_SESSION['id'])) {
-    header('location', 'login.php');
-}
-
-foreach ($erros3 as $erros3){
-    echo $erros3;
+    header('location: login.php');
 }
 
 
@@ -157,7 +149,10 @@ foreach ($erros3 as $erros3){
 
     </div>
 
-
+    <form method='POST' action="votef.php" class='sair'>
+        <input type="submit" name="logout" value="Sair">
+        <img src="../img/logout.png" alt="">
+    </form>
 
 
 </body>
