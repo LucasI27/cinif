@@ -9,7 +9,7 @@ $erros3 = array();
 
 if (isset($_POST['votar'])) {
     $nomegenero = $_POST['nomegenero'];
-    $id = $_POST['id'];
+    $id = $_SESSION['id'];
 
     $sql = "SELECT numvg FROM users WHERE id='$id'";
     $result = mysqli_query($conexao, $sql);

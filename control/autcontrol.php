@@ -13,10 +13,10 @@ $email = '';
 // CADASTRO
 
 if (isset($_POST['cadb'])){
-    $user = $_POST['user'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $confpassword = $_POST['confpassword'];
+    $user = $conexao->real_escape_string($_POST['user']);
+    $email = $conexao->real_escape_string($_POST['email']);
+    $password = $conexao->real_escape_string($_POST['password']);
+    $confpassword = $conexao->real_escape_string($_POST['confpassword']);
 
 
     // verificação
@@ -84,8 +84,8 @@ if (isset($_POST['cadb'])){
 //LOGIN
 
 if (isset($_POST['loginb'])) {
-    $user = $_POST['user'];
-    $password = $_POST['password'];
+    $user = $conexao->real_escape_string($_POST['user']);
+    $password = $conexao->real_escape_string($_POST['password']);
 
     //validação
     if (empty($user)){
@@ -138,9 +138,12 @@ function verifUser($token){
             $_SESSION['user'] = $usuario['user'];
             $_SESSION['email'] = $usuario['email'];
             $_SESSION['verif'] = 1;
-    
+
+            
             $_SESSION['msg'] = 'Verificado!';
             header('location: votef.php');
+
+            
             exit();
         }
     }else{

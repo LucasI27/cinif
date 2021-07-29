@@ -1,4 +1,12 @@
-<?php require_once '../control/autcontrol.php'; ?>
+<?php require_once '../control/autcontrol.php';
+
+if (isset($_SESSION['id'])) {
+    header('location: votef.php');
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

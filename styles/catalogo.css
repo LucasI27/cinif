@@ -420,6 +420,26 @@ body{
     .sair input:hover{
         filter: brightness(150%);
     }
+
+
+    .apagar{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        font-size: 2vh;
+        background-color: var(--or);
+        color: white;
+        cursor: pointer;
+        transition: 0.25s;
+        word-break: keep-all;
+        font-weight: bold;
+        padding: 1vh;
+    }
+
+    .apagar:hover{
+        background-color: rgb(248, 196, 100);
+    }
 }
 
     
@@ -490,13 +510,16 @@ body{
     .envb{
         border-radius: 1.5vh;
         border: none;
-        height: 8vh;
+        width: auto;
+        height: auto;
         font-size: 5vh;
         background-color: var(--acc);
         color: white;
         cursor: pointer;
         transition: 0.25s;
         word-break: keep-all;
+        font-weight: bold;
+        padding: 2vh;
     }
 
     .envb:hover{
@@ -743,6 +766,26 @@ body{
     .gear:hover{
         filter: brightness(150%);
         width: 8vh;
+    }
+
+
+    .apagar{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        font-size: 2vh;
+        background-color: var(--or);
+        color: white;
+        cursor: pointer;
+        transition: 0.25s;
+        word-break: keep-all;
+        font-weight: bold;
+        padding: 1vh;
+    }
+
+    .apagar:hover{
+        background-color: rgb(248, 196, 100);
     }
 
 

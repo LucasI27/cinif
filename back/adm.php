@@ -80,7 +80,7 @@ if ($_SESSION['verif'] == 0) {
         
         <?php if ($resultnum > 0): ?>
         <div class="i">
-            <?php while ($row = mysqli_fetch_assoc($result)):?>
+            <?php while ($row = mysqli_fetch_assoc($result)){?>
 
             <form action="adm.php" method="POST"  class="form" enctype="multipart/form-data">
                     
@@ -218,7 +218,7 @@ if ($_SESSION['verif'] == 0) {
                 
                 <hr class="linha">
 
-        <?php endwhile; ?>
+        <?php }?>
         <?php else: ?>
         </div>
             <div class="nof">

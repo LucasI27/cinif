@@ -86,7 +86,7 @@ foreach ($erros3 as $erros3){
             $sql = "SELECT * FROM genero WHERE numgenero>2 ORDER BY numvotosg DESC;";
             $result = mysqli_query($conexao, $sql);
             $resultnum = mysqli_num_rows($result);
-            $row = mysqli_fetch_assoc($result);    
+            $row = mysqli_fetch_assoc($result);
             ?>
 
 

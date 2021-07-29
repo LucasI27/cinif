@@ -466,6 +466,37 @@ textarea:hover{
             filter: brightness(150%);
             width: 5vh;
         }
+
+        
+    .sair{
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        top: 2vh;
+        right: 2vh;
+    }
+
+    .sair img{
+        display: none;
+    }
+
+    .sair input{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 1vh;
+        font-size: 1.3rem;
+        cursor: pointer;
+        background-color: var(--acc);
+        color: white;
+        transition: 0.25s;
+        font-weight: bold;
+    }
+
+    .sair input:hover{
+        filter: brightness(150%);
+    }
     
 }
 
@@ -880,5 +911,36 @@ textarea:hover{
     }
 
 
+    .sair{
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        bottom: 2vh;
+        right: 2vh;
+    }
+
+    .sair img{
+        width: 5vh;
+        height: auto;
+        margin-left: 1vh;
+    }
+
+    .sair input{
+        border-radius: 1.5vh;
+        border: none;
+        width: auto;
+        height: auto;
+        padding: 1vh;
+        font-size: 1.3rem;
+        cursor: pointer;
+        background-color: var(--acc);
+        color: white;
+        transition: 0.25s;
+        font-weight: bold;
+    }
+
+    .sair input:hover{
+        filter: brightness(150%);
+    }
 
 }

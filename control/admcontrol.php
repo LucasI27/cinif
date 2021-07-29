@@ -15,9 +15,9 @@ $sucesso = '';
 
 
 if(isset($_POST["catalogo"]) && !empty($_FILES["img"]["name"])){
-    $titulo = $_POST['titulo'];
+    $titulo = $conexao->real_escape_string($_POST['titulo']);
     $genero = $_POST['genero'];
-    $sinopse = $_POST['sinopse'];
+    $sinopse = $conexao->real_escape_string($_POST['sinopse']);
     $id = $_POST['id'];
     $targetDir = "uploads/";
     $img = basename($_FILES["img"]["name"]);
@@ -211,13 +211,42 @@ if (isset($_POST['voteter'])) {
     }
 
     $maxf = mysqli_fetch_assoc($result);
-    $nomevencedorf = $maxf['titulo'];
+    
+    if ($maxf['numvotosf'] > 0) {
+        $nomevencedorf = $maxf['titulo'];
+        $sql = "UPDATE catal SET exib=1 WHERE titulo='$nomevencedorf';";
+        $stmt1 = $conexao->prepare($sql);
+        if (!$conexao->query($sql)) {
+            $erros3['bd'] = mysqli_error($conexao);
+        }
 
-    $sql = "UPDATE catal SET exib=1 WHERE titulo='$nomevencedorf';";
+        $sql = "SELECT mens FROM controle;";
+        $result = mysqli_query($conexao, $sql);
+        $row = mysqli_fetch_assoc($result);
+        if (!$conexao->query($sql)) {
+           echo $erros3['bd'] = mysqli_error($conexao);
+        } 
+    
+        $mens = $row['mens'];
+        $mens .= " As votações já terminaram, o filme exibido será $nomevencedorf";
+    
+        $sql = "UPDATE controle SET mens='$mens'";
+        $stmt1 = $conexao->prepare($sql);
+        if (!$conexao->query($sql)) {
+            $erros3['bd'] = mysqli_error($conexao);
+        }
+    }
+
+
+
+
+    $sql = "UPDATE controle SET voteg=0, votef=0";
     $stmt1 = $conexao->prepare($sql);
     if (!$conexao->query($sql)) {
         $erros3['bd'] = mysqli_error($conexao);
-    } 
+    }
+
+
 
 
 
@@ -240,23 +269,6 @@ if (isset($_POST['voteter'])) {
 
 
 
-    $sql = "SELECT mens FROM controle;";
-    $result = mysqli_query($conexao, $sql);
-    $row = mysqli_fetch_assoc($result);
-    if (!$conexao->query($sql)) {
-       echo $erros3['bd'] = mysqli_error($conexao);
-    } 
-
-    $mens = $row['mens'];
-    $mens .= " As votações já terminaram, o filme exibido será $nomevencedorf";
-
-
-    $sql = "UPDATE controle SET voteg=0, votef=0, mens='$mens'";
-    $stmt1 = $conexao->prepare($sql);
-    if (!$conexao->query($sql)) {
-        $erros3['bd'] = mysqli_error($conexao);
-
-    }
 
     
     $sql = "UPDATE controle SET vencedorg=(SELECT nomegenero FROM genero WHERE vencedor=1);";

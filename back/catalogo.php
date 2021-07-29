@@ -1,7 +1,8 @@
 <?php
-require '../control/conexao.php';
+require_once '../control/conexao.php';
 require_once '../control/autcontrol.php';
 require_once '../control/votecontrol.php';
+require_once '../control/admcontrol.php';
 
 $sql = "SELECT * FROM controle";
 $result = mysqli_query($conexao, $sql);
@@ -61,15 +62,14 @@ if (!isset($_SESSION['id'])) {
 
 
         <div class="descd">
-            <a href="add.php"><button class="envb">Adicionar filme</button></a>
+            <a href="add.php"><button class="envb">+ Adicionar filme</button></a>
         </div>
 
         <div class="descm">
-            <a href="add.php"><button class="envb">Adicionar filme</button></a>
+            <a href="add.php"><button class="envb">+ Adicionar filme</button></a>
         </div>
 
 
-        <?php if ($controle['voteg'] == 1): ?>
 
             <?php
                 $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 ORDER BY titulo;";
@@ -89,7 +89,7 @@ if (!isset($_SESSION['id'])) {
                     
                     <?php while ($row = mysqli_fetch_assoc($result)):?>
                     
-                        <form method="POST" action="votef.php" class="card card-1">
+                        <form method="POST" action="catalogo.php" class="card card-1">
                             <table class="bord">
                                 <tr>
                                     <td class="flx">
@@ -118,7 +118,13 @@ if (!isset($_SESSION['id'])) {
                                                 </span>
                                                 <?php echo $row['sinopse'];?>
                                             </p>
+                                            <?php if ($_SESSION['id'] == 1):?>
+                                                <button type="submit" alt="votar" name="apagar" class="apagar">
+                                                    Apagar filme
+                                                </button>
+                                            <?php endif;?>
                                         </div>
+                                        <input type="hidden" name="id" value="<?php echo $row['id'];?>">
                                     </td>
                                 </tr>
                             </table>
@@ -135,14 +141,6 @@ if (!isset($_SESSION['id'])) {
                 </div>
 
             <?php endif;?>
-        <?php else:?>
-
-            <div class="nof">
-                <img src="../img/inf.png" class="noimg" alt="">
-                <p>A votação ainda não começou.</p>
-            </div>
-
-        <?php endif;?>
 
  
             
