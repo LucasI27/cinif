@@ -16,6 +16,9 @@ body{
     transition-duration: 0.25s;
 }
 
+a{
+    text-decoration: none;
+}
 
 
 ::-webkit-scrollbar-track
@@ -68,11 +71,11 @@ body{
     .header{
         background-color:var(--bg);
         width: 100%;
+        height: 20vh;
         border-radius: 0vw 0vw 1.5vh 1.5vh;
         box-shadow: 0px 0.5vh 5px rgb(80, 80, 80);
         display: flex;
-        flex-direction: column;
-        height: 19.5vh;
+        flex-direction: row;
     }
 
     .logo{
@@ -94,7 +97,7 @@ body{
         top: 2vh;
         padding: 0.1vh;
         background-color: var(--acc);
-        border-radius: 3vw;
+        border-radius: 1.5vh;
         color: white;
         width: 94%;
         margin: auto;
@@ -145,7 +148,7 @@ body{
         background-color: #2D2E2E;
         padding: 0.5vh;
         border-radius: 2vh;
-        width: 100%;
+        width: auto;
         display: block;
         margin-left:-1vw;
     }
@@ -183,6 +186,7 @@ body{
 
 
 
+
     .navop:hover{
         color: var(--acc);
         filter: brightness(120%);
@@ -213,7 +217,7 @@ body{
     }
 
 
-        .cardprim{
+    .cardprim{
         border: solid 1vh var(--acc);
         padding: 1vh;
         border-radius: 2vh;
@@ -249,11 +253,6 @@ body{
         margin: auto;
     }
 
-    .voteb:hover{
-        filter: brightness(150%);
-        width: 10vh;
-        height: 10vh;
-    }
 
     .numv{
         color: var(--texto);
@@ -267,10 +266,12 @@ body{
         position: absolute;
         width: 100%;
         top: 55vh;
-
-        
         text-align: center;
         color: var(--texto);
+    }
+
+    .nof p{
+        padding: 0vh 5vh;
     }
     
     .noimg{
@@ -280,26 +281,26 @@ body{
 
 
     .gear{
-        width: 4vh;
+        width: 7vh;
         height: auto;
         position: relative;
+        transition: 0.25s;
+    }
+
+    .gear{
+        width: 4vh;
+        margin-top: 1.5vh;
+        height: auto;
         margin-left: 1vh;
         transition: 0.25s;
     }
 
 
     .titl{
+        margin-top: 1.5vh;
         display: flex;
         flex-direction: row;
-        align-items: center;
     }
-
-
-    .gear:hover{
-        filter: brightness(150%);
-        width: 5vh;
-    }
-
 
     
     .sair{
@@ -331,6 +332,11 @@ body{
     .sair input:hover{
         filter: brightness(150%);
     }
+
+    .titsin{
+        font-weight: bold;
+        color: #25bb7f;
+    }
 }
 
     
@@ -357,25 +363,35 @@ body{
         margin: 3vh;
     }
 
-    .posm{
-        display: none;
+
+
+    
+    .side{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 1.5vh;
+        margin-left: 1vh;
+        margin-top: 2vh;
+        width: 33vw;
+        justify-content: center;
     }
 
     .balaot{
         margin: 1.5vw;
         position: relative;
-        font-size: 2vw
+        font-size: 1.7rem;
     }
+
+
     .balao{
-        top: 19%;
-        right: 1vw;
-        margin-right: 1vh;
-        position: fixed;
         text-align: center;
         background-color: var(--acc);
         border-radius: 1vw;
         color: white; 
-        width:30vw; 
+        width: 90%;
+        margin: auto; 
     }
 
     .descm{
@@ -383,13 +399,14 @@ body{
     }
     
     .descd{
-        position: fixed;
+        margin-top: 2vh;
         text-align: center;
-        right: 4vw;
-        top: min(57vh, 1486px);
         color: rgb(124, 124, 124);
         font-size: 1.7vw;
-        width: 27vw;
+    }
+
+    .descd p{
+        padding: 0 3vh;
     }
 
     
@@ -425,24 +442,24 @@ body{
     .header{
         background-color:var(--bg);
         width: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
         border-radius: 0vw 0vw 1.1vw 1.1vw;
         box-shadow: 0px 0.3vh 5px rgb(80, 80, 80);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 17vh;
     }
 
     .seta{
-        top: 16%;
-        margin-left: 4vh;
-        position: fixed;
-        width: 0vw; 
-        height: 0vw; 
-        border-left: 3vw solid transparent;
-        border-right: 3vw solid transparent;
-        border-bottom: 4vw solid var(--acc);
+        top: 13vh;
+        width: 0vh; 
+        height: 0vh; 
+        margin: auto;
+        position: absolute;
+        border-left: 5.7vh solid transparent;
+        border-right: 5.7vh solid transparent;
+        border-bottom: 7vh solid var(--acc);
     }
-
 
 
 
@@ -451,11 +468,12 @@ body{
         padding: 1vh;
         border-radius: 2vh;
         display: block;
-        margin: 2vh;
         width: auto;
-        position: fixed;
-        right: 0;
         top: 1vh;
+        margin-bottom: 5vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .navop{
@@ -483,10 +501,17 @@ body{
         transition-duration: 0.25s;
         cursor: pointer;
         font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
 
-
+    .titsin{
+        font-weight: bold;
+        color: #25bb7f;
+    }
 
     .navop:hover{
         color: var(--acc);
@@ -495,7 +520,7 @@ body{
     }
 
     .contcard{
-        margin-top: 20vh;
+        margin-top: 2vh;
     }
 
     .card{
@@ -633,6 +658,7 @@ body{
         cursor: pointer;
         background-color: var(--acc);
         color: white;
+        font-weight: bold;
         transition: 0.25s;
     }
 

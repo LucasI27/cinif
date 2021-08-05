@@ -3,6 +3,13 @@ require '../control/conexao.php';
 require '../control/autcontrol.php';
 require '../control/votecontrol.php';
 
+$id_vote = $_SESSION['id'];
+
+$sql = "SELECT numvf FROM users WHERE id= $id_vote";
+$result = mysqli_query($conexao, $sql);
+$numv = mysqli_fetch_assoc($result);
+
+
 $sql = "SELECT * FROM controle";
 $result = mysqli_query($conexao, $sql);
 $controle = mysqli_fetch_assoc($result);
@@ -33,29 +40,36 @@ if (!isset($_SESSION['id'])) {
 <body>
     <div class="flex">
 
-    <table class="header">
-        <tr>
-            <td style="width: 10vh;"><a href="votef.php"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
-            <td class="titl"><p class="titulo">CinIF</p>
-            <?php if ($_SESSION["id"] == 1): ?>
-                <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
-            <?php endif; ?>
-            </td>
-            <table class="align">
-                <tr class="navbg">
-                    <td><a href="../back/voteg.php"><button class="navop">Gêneros</button></td>
-
-                    <td><a href="../back/votef.php"><button class="navops">Filmes</button>
-                        <div class="seta"></div>
-                    </td>
-                    <td><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
-                </tr>
-            </table>
-        </tr>
-        </table>
-    <div class="balao">
-        <p class="balaot">O filme no topo da lista será exibido, vote na sua preferência e fique atento ao horário e local de exibição!</p>
+    <div class="header">
+            <a href="votef.php">
+                <img src="../img/logo2.png" alt="logo" class="logo">
+            </a>
+            <div class="titl"><p class="titulo">CinIF</p>
+                <?php if ($_SESSION["id"] == 1): ?>
+                    <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
+                <?php endif; ?>
+            </div>
     </div>
+
+    <div class="side">
+
+        <table class="align">
+            <tr class="navbg">
+                <td><a href="../back/voteg.php"><button class="navop">Gêneros</button></td>
+
+                <td><a href="../back/votef.php">
+                    <button class="navops">Filmes
+                        <div class="seta"></div>
+                    </button>
+                </td>
+                
+                <td><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
+            </tr>
+        </table>
+
+        <div class="balao">
+            <p class="balaot">O filme no topo da lista será exibido, vote na sua preferência e fique atento ao horário e local de exibição!</p>
+        </div>
 
 
 
@@ -69,6 +83,7 @@ if (!isset($_SESSION['id'])) {
             <p><?php echo $mens;?></p>
         </div>
 
+    </div>
 
         <?php if ($controle['voteg'] == 1): ?>
 
@@ -78,7 +93,7 @@ if (!isset($_SESSION['id'])) {
             $venc = mysqli_fetch_assoc($result);
             if ($venc['vencedorg'] !=='') {
                 $genero = $venc['vencedorg'];
-                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 AND genero='$genero' ORDER BY numvotosf DESC LIMIT 7;";
+                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 AND genero='$genero' ORDER BY numvotosf DESC, id LIMIT 7;";
                 $result = mysqli_query($conexao, $sql);
                 if (!$conexao->query($sql)) {
                     echo $erros2['bd'] = mysqli_error($conexao);
@@ -86,7 +101,7 @@ if (!isset($_SESSION['id'])) {
                 $resultnum = mysqli_num_rows($result);
                 $row = mysqli_fetch_assoc($result);
             }else{
-                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 ORDER BY numvotosf DESC LIMIT 7;";
+                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 ORDER BY numvotosf DESC, RAND() LIMIT 7;";
                 $result = mysqli_query($conexao, $sql);
                 if (!$conexao->query($sql)) {
                     echo $erros2['bd'] = mysqli_error($conexao);
@@ -119,9 +134,19 @@ if (!isset($_SESSION['id'])) {
                                 <div class="votos">
                                     <p class="numv"><?php echo $row['numvotosf']; ?></p>
                                     
-                                    <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;">
-                                        <img src="../img/botaov.png" class="voteb">
-                                    </button>
+
+
+                                    <?php if ($numv['numvf'] == 0):?>
+                                        <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;" disabled>
+                                            <img src="../img/botaov.png" class="voteb" style="filter: saturate(0%); cursor:not-allowed;">
+                                        </button>
+                                    <?php else: ?>
+                                        <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;">
+                                            <img src="../img/botaov.png" class="voteb">
+                                        </button>            
+                                    <?php endif; ?>
+
+
                                 </div>
                             </td>
                         </tr>
@@ -177,9 +202,15 @@ if (!isset($_SESSION['id'])) {
                                             
                                             <p class="numv"><?php echo $row['numvotosf']; ?></p>
                                             
-                                            <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;">
-                                                <img src="../img/botaov.png" class="voteb">
-                                            </button>
+                                            <?php if ($numv['numvf'] == 0):?>
+                                                <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;" disabled>
+                                                    <img src="../img/botaov.png" class="voteb" style="filter: saturate(0%); cursor:not-allowed;">
+                                                </button>
+                                            <?php else: ?>
+                                                <button type="submit" alt="votar" name="votarf" style="background-color: transparent; border: none;">
+                                                    <img src="../img/botaov.png" class="voteb">
+                                                </button>            
+                                            <?php endif; ?>
                                         </div>
                                     </td>
                                 </tr>

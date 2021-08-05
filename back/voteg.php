@@ -3,6 +3,12 @@ require '../control/conexao.php';
 require_once '../control/autcontrol.php';
 require_once '../control/votecontrol.php';
 
+$id_vote = $_SESSION['id'];
+
+$sql = "SELECT numvg FROM users WHERE id= $id_vote";
+$result = mysqli_query($conexao, $sql);
+$numv = mysqli_fetch_assoc($result);
+
 $sql = "SELECT * FROM controle";
 $result = mysqli_query($conexao, $sql);
 $controle = mysqli_fetch_assoc($result);
@@ -36,35 +42,45 @@ foreach ($erros3 as $erros3){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">   
     <link rel="icon" href="../img/logo2.png">
-    <link rel="stylesheet" href="../styles/vote.css">
+    <link rel="stylesheet" href="../styles/voteg.css">
     <title>CinIF</title>
 </head>
 <body>
     <div class="flex">
 
-    <table class="header">
-        <tr>
-            <td style="width: 10vh;"><a href="votef.php"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
-            <td class="titl"><p class="titulo">CinIF</p>
-            <?php if ($_SESSION["id"] == 1): ?>
-                <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
-            <?php endif; ?>
-            </td>
-                    <table class="align">
-                        <tr class="navbg">
-                            <td class="bord"><a href="../back/voteg.php"><button class="navops">Gêneros</button>
-                                <div class="seta"></div>
-                            </td>
-                            <td class="bord"><a href="../back/votef.php"><button class="navop">Filmes</button></td>
-                            <td class="bord"><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
-                        </tr>
-                    </table>
-                </tr>
-            </table>
-        <div class="balao">
-            <p class="balaot">Os filmes presentes na próxima votação serão do gênero no topo da lista!</p>
-        </div>
+    <div class="header">
+            <a href="votef.php">
+                <img src="../img/logo2.png" alt="logo" class="logo">
+            </a>
+            <div class="titl"><p class="titulo">CinIF</p>
+                <?php if ($_SESSION["id"] == 1): ?>
+                    <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
+                <?php endif; ?>
+            </div>
+    </div>
 
+    <div class="side">
+
+        <table class="align">
+            <tr class="navbg">
+                
+                <td>
+                    <a href="../back/voteg.php">
+                        <button class="navops">Generos
+                            <div class="seta"></div>
+                        </button>
+                    </a>
+                </td>
+                
+                <td><a href="../back/votef.php"><button class="navop">Filmes</button></td>
+                
+                <td><a href="../back/catalogo.php"><button class="navop">Catálogo</button></td>
+            </tr>
+        </table>
+
+        <div class="balao">
+            <p class="balaot">Na próxima votação, os filmes presentes serão do gênero vencedor.</p>
+        </div>
 
 
 
@@ -77,6 +93,8 @@ foreach ($erros3 as $erros3){
         <div class="descm">
             <p><?php echo $mens;?></p>
         </div>
+
+    </div>
 
 
 
@@ -100,10 +118,18 @@ foreach ($erros3 as $erros3){
                 }else
                     echo 'class="cardprim"';?>
                 >
-                    <input type="hidden" name="nomegenero" value="<?php echo $row['nomegenero'];?>">
-                    <button type="submit" alt="votar" name="votar" style="background-color: transparent; border: none;">
-                        <img src="../img/botaov.png" class="voteb">
-                    </button>
+
+                    <?php if ($numv['numvg'] == 0):?>
+                        <button type="submit" alt="votar" name="votarg" style="background-color: transparent; border: none;" disabled>
+                            <img src="../img/botaov.png" class="voteb" style="filter: saturate(0%); cursor:not-allowed;">
+                        </button>
+                    <?php else: ?>
+                        <button type="submit" alt="votar" name="votarg" style="background-color: transparent; border: none;">
+                            <img src="../img/botaov.png" class="voteb">
+                        </button>            
+                    <?php endif; ?>
+
+
                     <p class="numv"><?php echo $row['numvotosg']; ?></p>
                     <p class="cardt"><?php echo $row['nomegenero'] ?></p>
                 </form>
@@ -113,9 +139,18 @@ foreach ($erros3 as $erros3){
                 
                     <form method="POST" action="voteg.php" class="card">
                         <input type="hidden" name="nomegenero" value="<?php echo $row['nomegenero'];?>">
-                        <button type="submit" alt="votar" name="votar" style="background-color: transparent; border: none;">
-                            <img src="../img/botaov.png" class="voteb">
-                        </button>
+
+                        <?php if ($numv['numvg'] == 0):?>
+                            <button type="submit" alt="votar" name="votarg" style="background-color: transparent; border: none;" disabled>
+                                <img src="../img/botaov.png" class="voteb" style="filter: saturate(0%); cursor:not-allowed;">
+                            </button>
+                        <?php else: ?>
+                            <button type="submit" alt="votar" name="votarg" style="background-color: transparent; border: none;">
+                                <img src="../img/botaov.png" class="voteb">
+                            </button>            
+                        <?php endif; ?>
+
+
                         <p class="numv"><?php echo $row['numvotosg']; ?></p>
                         <p class="cardt"><?php echo $row['nomegenero'] ?></p>
 
@@ -128,7 +163,7 @@ foreach ($erros3 as $erros3){
 
                 <div class="nof">
                     <img src="../img/inf.png" class="noimg" alt="">
-                    <p>A votação de gêneros só acontece quando há certa diversidade de filmes no cadastrados, vá na aba "Catálogo" para adicionar os filmes de sua preferência.</p>
+                    <p>A votação de gêneros só acontece quando há certa diversidade de filmes cadastrados, vá na aba "Catálogo" para adicionar os filmes de sua preferência.</p>
                 </div>
                 
             <?php endif;?>

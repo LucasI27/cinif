@@ -18,33 +18,35 @@ if (isset($_SESSION['id'])) {
 <body>
     <div class="flex">
 
-        <table class="header">
-            <tr>
-                <td class="bord"><a href="../init.html"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
-                <td><p class="titulo">CinIF</p></td>
-                <td class="bord"><a href="login.php"><button class="loginb">Login</button></a></td>
-            </tr>
-        </table>
-        <?php if (count($erros) > 0): ?>
-            <div class="erro">
-                <?php foreach($erros as $erros): ?>
-                    <li class="errot"><?php echo $erros; ?></li>
-                <?php endforeach; ?>
+        <div class="header">
+            <a href="votef.php"><img src="../img/logo2.png" alt="logo" class="logo"></a>
+            <p class="titulo">CinIF</p>
+            <div>
+                <a href="login.php"><button class="loginb">Login</button></a>
             </div>
-        <?php else: ?>
-            <div class="seta"></div>
-            <div class="balao">
-                <p class="balaot">Já tem uma conta? Entre por aqui!</p>
-            </div>
-        <?php endif; ?>
-
-        <div class="descdlog">
-            <img src="../img/inf.png" class="inf">
-            <p>Assim como o CinIF é um evento que ocorre exclusivamente para os alunos internos, este site é feito exclusivamente para ajuda-los</p>
         </div>
+        <div class="side">
+            <?php if (count($erros) > 0): ?>
+                <div class="erro">
+                    <?php foreach($erros as $erros): ?>
+                        <li class="errot"><?php echo $erros; ?></li>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <div class="seta"></div>
+                <div class="balao">
+                    <p class="balaot">Já tem uma conta? Entre por aqui!</p>
+                </div>
+            <?php endif; ?>
 
-        <div class="descm">
-            <p>Assim como o CinIF é um evento que ocorre exclusivamente para os alunos internos, este site é feito exclusivamente para ajuda-los</p>
+            <div class="descd">
+                <img src="../img/inf.png" class="inf">
+                <p>Assim como o CinIF é um evento que ocorre exclusivamente para os alunos internos, este site é feito exclusivamente para ajuda-los</p>
+            </div>
+
+            <div class="descm">
+                <p>Assim como o CinIF é um evento que ocorre exclusivamente para os alunos internos, este site é feito exclusivamente para ajuda-los</p>
+            </div>
         </div>
 
         <div class="i">
@@ -75,8 +77,8 @@ if (isset($_SESSION['id'])) {
                 <input type="password" name="confpassword" class="campo">
             </div>
             
-            <div>
-                <button type="submit" name="cadb" class="envb">Enviar</button>
+            <div class="envb">
+                <button type="submit" name="cadb" >Enviar</button>
             </div>
         </form>
         

@@ -61,7 +61,7 @@ if (isset($_POST['cadb'])){
         $stmt->bind_param('ssbss', $user, $email, $verif, $token, $password);
         
         if ($stmt->execute()){
-            // loguei amem
+
             $user_id = $conexao->$insert_id;
             $_SESSION['id'] = $user_id;
             $_SESSION['user'] = $user;
@@ -96,12 +96,9 @@ if (isset($_POST['loginb'])) {
     }
 
     if (count($erros) === 0) {
-        $sql = "SELECT * FROM users WHERE email=? OR user=? LIMIT 1";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bind_param('ss', $user, $user);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $usuario = $result->fetch_assoc();
+        $sql = "SELECT * FROM users WHERE email='$user' OR user='$user' LIMIT 1";
+        $result = mysqli_query($conexao, $sql);
+        $usuario = mysqli_fetch_assoc($result);
     
         if (password_verify($password, $usuario['password'])) {
             //loguei é nos

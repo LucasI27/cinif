@@ -35,34 +35,36 @@ if (!isset($_SESSION['id'])) {
             </td>
             </tr>
         </table>
-        <?php if (count($erros2) > 0 AND !isset($erros2['sucesso'])): ?>
-            <div class="erro">
-                <?php foreach($erros2 as $erros2): ?>
-                    <li class="errot"><?php echo $erros2; ?></li>
-                <?php endforeach; ?>
-            </div>
-        <?php else: ?>
-            <?php if (isset($erros2['sucesso'])): ?>
-                <div class="balao">
-                    <p class="balaot"><?php echo $erros2['sucesso']?></p>
+        <div class="side">
+            <?php if (count($erros2) > 0 AND !isset($erros2['sucesso'])): ?>
+                <div class="erro">
+                    <?php foreach($erros2 as $erros2): ?>
+                        <li class="errot"><?php echo $erros2; ?></li>
+                    <?php endforeach; ?>
                 </div>
-            <?php else: ?>    
-            <div class="balao">
-                <p class="balaot">Adicione um filme ao nosso catálogo, ele pode aparecer futuramente nas votações</p>
-            </div>
+            <?php else: ?>
+                <?php if (isset($erros2['sucesso'])): ?>
+                    <div class="balao">
+                        <p class="balaot"><?php echo $erros2['sucesso']?></p>
+                    </div>
+                <?php else: ?>    
+                <div class="balao">
+                    <p class="balaot">Adicione um filme ao nosso catálogo, ele pode aparecer futuramente nas votações</p>
+                </div>
+                <?php endif; ?>
             <?php endif; ?>
-        <?php endif; ?>
-        
+            
 
-        
+            
 
-        <div class="descd">
-            <img src="../img/inf.png" class="inf">
-            <p>Os filmes adicionados passam por uma validação e análise humana antes de serem adicionadas ao catálogo</p>
-        </div>
+            <div class="descd">
+                <img src="../img/inf.png" class="inf">
+                <p>Os filmes adicionados passam por uma validação e análise humana antes de serem adicionadas ao catálogo</p>
+            </div>
 
-        <div class="descm">
-            <p>Os filmes adicionados passam por uma validação e análise humana antes de serem adicionadas ao catálogo</p>
+            <div class="descm">
+                <p>Os filmes adicionados passam por uma validação e análise humana antes de serem adicionadas ao catálogo</p>
+            </div>
         </div>
 
 
@@ -99,12 +101,12 @@ if (!isset($_SESSION['id'])) {
             <div>
                 <label class="label" for="sinopse">Sinopse(opcional)</label>
                 <br>            
-                <textarea name="sinopse" class="campo" cols="30" rows="5" style="resize: none;"></textarea>
+                <textarea name="sinopse" class="campo" cols="30" rows="4" style="resize: none;"></textarea>
             </div>
             
 
-            <div>
-                <button type="submit" name="tempb" class="envb">Enviar</button>
+            <div class="envb">
+                <button type="submit" name="tempb" >Enviar</button>
             </div>
         </form> 
         </div>

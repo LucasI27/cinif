@@ -47,8 +47,6 @@ if (isset($_POST['tempb'])){
 
 
     if (count($erros2) === 0) {
-        
-
         $sql = "INSERT INTO catal (titulo, genero, sinopse, exib, valid) VALUES ('$titulo', '$genero', '$sinopse', '$exib', '$valid')";
         $stmt1 = $conexao->prepare($sql);
         if (!$conexao->query($sql)) {

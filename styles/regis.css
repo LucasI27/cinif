@@ -17,6 +17,12 @@ body{
 }
 
 
+textarea{
+    font-family: 'Poppins', sans-serif;
+    resize: none;
+}
+
+
 button[disabled=disabled], button:disabled {
     filter: brightness(50%);
     cursor:not-allowed;
@@ -26,10 +32,7 @@ button[disabled=disabled], button:disabled {
 .loginb:hover{
     filter: brightness(150%);
 }
-.envb:hover{
-    filter: brightness(150%);
-}
-.apagarb:hover{
+.envb button:hover{
     filter: brightness(150%);
 }
 
@@ -96,6 +99,16 @@ textarea:hover{
         width: 100%;
         border-radius: 0vw 0vw 1.5vh 1.5vh;
         box-shadow: 0px 0.5vh 5px rgb(80, 80, 80);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .header div{
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        margin-right: 4vw;
     }
 
     .logo{
@@ -117,7 +130,7 @@ textarea:hover{
         top: 1.5vh;
         padding: 0.1vh;
         background-color: var(--acc);
-        border-radius: 3vw;
+        border-radius: 1.5vh;
         color: white;
         width: 94%;
         margin: auto;
@@ -126,7 +139,7 @@ textarea:hover{
     .balaot{
         margin: 3vw;
         position: relative;
-        font-size: 5vw;
+        font-size: 1rem;
     }
     
     .seta{
@@ -141,19 +154,20 @@ textarea:hover{
     .loginb{
         border-radius: 1vh;
         border: none;
-        margin-right: 2vh;
-        height: min(20%, 100px);
-        font-size: 1.5rem;
-        font-family:Product Sans ;
+        font-size: 1.3rem;
         background-color: var(--acc);
         color: white;
         cursor: pointer;
-        transition: background-color .75s;
-        word-break: normal;
+        padding: 0.7vh;
+        font-weight: bold;
         transition-duration: 0.25s;
     }
     .bord{
         width: 25%;
+    }
+
+    .i{
+        margin-top: -2vh;
     }
 
 
@@ -251,14 +265,23 @@ textarea:hover{
     }
 
     .envb{
-        border: none;
         margin-top: 3vh;
-        font-size: 1.2rem;
+        display: flex;
+        flex-direction: row;
+        justify-items: center;
+        width: 100%;
+    }
+
+    .envb button{
+        border: none;
+        font-size: 1.5rem;
         background-color: var(--acc);
         color: white;
         border-radius: 1vh;
-        height: 5vh;
-        width: auto;
+        padding: 1vh;
+        width: 30vh;
+        margin: auto;
+        font-weight: bold;
         transition-duration: 0.25s;
         cursor: pointer;
     }
@@ -343,6 +366,7 @@ textarea:hover{
         font-size: 1rem;
         text-align: center;
         margin: 4vh;
+        margin-bottom: 0;
     }
 
     .nof{
@@ -411,9 +435,10 @@ textarea:hover{
         .controlb{
             border: none;
             padding: 1vh;
-            font-size: 5vw;
+            font-size: 1rem;
             background-color: var(--acc);
             color: white;
+            font-weight: bold;
             border-radius: 1vh;
             height: 44%;
             width: 100%;
@@ -456,6 +481,7 @@ textarea:hover{
     
     
         .titl{
+            margin-top: 1vh;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -521,60 +547,72 @@ textarea:hover{
         font-size: 7vh;
         color: rgb(199, 199, 199);
         font-weight: bold;
-        margin: 3vh;
+        margin: 0 3vh;
     }
 
 
     .loginb{
-        border-radius: 1.5vh;
+        border-radius: 1vh;
         border: none;
-        height: 8vh;
-        font-size: 5vh;
-        font-family:Product Sans ;
+        font-size: 2.5rem;
         background-color: var(--acc);
         color: white;
         cursor: pointer;
-        word-break: keep-all;
+        padding: 1vh;
+        font-weight: bold;
         transition-duration: 0.25s;
     }
 
     .logo{
         height: 10vh;
         width: auto;
-        margin-left: 2vh;
+        margin: 0 2vh;
     }
 
     .header{
         background-color:var(--bg);
         width: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
         border-radius: 0vw 0vw 1.1vw 1.1vw;
         box-shadow: 0px 0.3vh 5px rgb(80, 80, 80);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 17vh;
     }
 
-    .bord{
-        width: 8vh;
-        padding-right: 4vh;
+    .header div{
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        padding-right: 2vw;
     }
+
+    .side{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: 2vw;
+        margin-left: 1vh;
+        margin-top: 2vh;
+        width: 29vw;
+        justify-items: center;
+    }
+
 
     .balaot{
         margin: 1.5vw;
         position: relative;
-        font-size: 2vw
+        font-size: 1.7rem
     }
+
     .balao{
-        top: 19%;
-        right: 1vw;
-        margin-right: 1vh;
-        position: fixed;
         text-align: center;
         background-color: var(--acc);
         border-radius: 1vw;
         color: white; 
-        width:30vw; 
+        width:100%; 
     }
+
     .seta{
         top: 16%;
         right: 3vw;
@@ -587,15 +625,12 @@ textarea:hover{
     }
 
     .erro{
-        top: 19%;
-        right: 1vw;
         margin-right: 1vh;
-        position: fixed;
         text-align: center;
         background-color: var(--or);
         border-radius: 1vw;
         color: white; 
-        width:30vw; 
+        width:100%; 
     }
 
     .errot{
@@ -608,13 +643,15 @@ textarea:hover{
         display: none;
     }
     .descd{
-        position: fixed;
         text-align: center;
-        right: 4vw;
-        top: min(57vh, 1486px);
+        margin-top: 3vh;
         color: rgb(124, 124, 124);
         font-size: 1.7vw;
-        width: 27vw;
+        width: 100%;
+    }
+
+    .descd p{
+        padding: 0 2vh;
     }
 
  
@@ -648,7 +685,7 @@ textarea:hover{
 
 
     .i{
-        margin-top: 19.4vh;
+        margin-top: 2.5vh;
     }
 
     .form{
@@ -666,7 +703,7 @@ textarea:hover{
 
     .linha{
         margin: 5vh ;
-        color: var(--texto);
+        color: #222222;
         width: 40vw;
         margin-left: 12vw;
     }
@@ -736,77 +773,72 @@ textarea:hover{
     }
 
     .envb{
-        border: none;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
         margin-top: 3vh;
-        font-size: 1.2rem;
+    }
+
+    .envb button{
+        border: none;
+        font-size: 1.7rem;
         background-color: var(--acc);
         color: white;
         border-radius: 1vh;
-        height: 5vh;
-        width: auto;
+        padding: 1.5vh;
+        font-weight: bold;
         transition-duration: 0.25s;
         cursor: pointer;
     }
 
-    .apagarb{
-        border: none;
-        margin-top: 3vh;
-        font-size: 1.2rem;
-        background-color: var(--or);
-        color: white;
-        border-radius: 1vh;
-        height: 5vh;
-        width: auto;
-        transition-duration: 0.25s;
-        cursor: pointer;
-    }
+
 
 
     .dropdown-select {
-    height: auto;
-    -webkit-border-top-right-radius: 1vh;
-    -webkit-border-bottom-right-radius: 1vh;
-    -webkit-border-bottom-left-radius: 1vh;
-    -webkit-border-top-left-radius: 1vh;
-    -moz-border-radius-topright: 1vh;
-    -moz-border-radius-topleft: 1vh;
-    -moz-border-radius-bottomright: 1vh;
-    -moz-border-radius-bottomleft: 1vh;
-    border-top-left-radius: 1vh;
-    border-bottom-left-radius: 1vh;
-    border-top-right-radius: 1vh;
-    border-bottom-right-radius: 1vh;
-    margin-left: 1vh;
-    padding: 6px 8px 6px 10px;
-    font-size: 1.1rem;
-    color: #C7C7C1;
-    background: #2D2E2E;
-    border: 0;
-    transition-duration: 0.25s;
+        height: auto;
+        -webkit-border-top-right-radius: 1vh;
+        -webkit-border-bottom-right-radius: 1vh;
+        -webkit-border-bottom-left-radius: 1vh;
+        -webkit-border-top-left-radius: 1vh;
+        -moz-border-radius-topright: 1vh;
+        -moz-border-radius-topleft: 1vh;
+        -moz-border-radius-bottomright: 1vh;
+        -moz-border-radius-bottomleft: 1vh;
+        border-top-left-radius: 1vh;
+        border-bottom-left-radius: 1vh;
+        border-top-right-radius: 1vh;
+        border-bottom-right-radius: 1vh;
+        margin-left: 1vh;
+        padding: 6px 8px 6px 10px;
+        font-size: 1.1rem;
+        color: #C7C7C1;
+        background: #2D2E2E;
+        border: 0;
+        transition-duration: 0.25s;
     }
     
     .dropdown-select:focus {
-    border-width: 0.5vh;
-    border-style: solid;
-    border-color: var(--acc);
-    background-color: var(--bg);
+        border-width: 0.5vh;
+        border-style: solid;
+        border-color: var(--acc);
+        background-color: var(--bg);
 
     }
     
     .dropdown-select > option {
-    margin: 3px;
-    padding: 6px 8px;
-    text-shadow: none;
-    background: var(--bg);
-    cursor: pointer;
+        margin: 3px;
+        padding: 6px 8px;
+        text-shadow: none;
+        background: var(--bg);
+        cursor: pointer;
     }
       
     .nof{
-    position: absolute;
-    top: 40vh;
-    left: 25vw;
-    text-align: center;
-    color: var(--texto);
+        position: absolute;
+        top: 40vh;
+        left: 25vw;
+        text-align: center;
+        color: var(--texto);
     }
     
     .noimg{
@@ -849,15 +881,15 @@ textarea:hover{
     }
 
     .contcontrol{
+        margin-top: 3vh;
+        margin-bottom: 3vh;
         text-align: center;
         right: 1.2vw;
-        position: fixed;
-        width:29vw; 
-        position: fixed;
+        width:100%; 
         bottom: 1vh;
         background-color:#0d0e0e;
         border-radius: 2vh;
-        padding: 1.5vh;
+        padding: 1.5vh 0;
         display: flex;
         flex-direction: column;
     }
@@ -865,25 +897,25 @@ textarea:hover{
     .controlb{
         border: none;
         padding: 1vh;
-        font-size: 1.8vw;
+        font-size: 1.4rem;
         background-color: var(--acc);
         color: white;
+        font-weight: bold;
         border-radius: 1vh;
         height: auto;
         width: auto;
-        transition-duration: 0.25s;
     }
 
         
     .mens{
         border-radius: 1vh;
-        width: 26.5vw;
+        width: 90%;
         border-color: #2D2E2E;
         outline: none;
         border-width: 0;
         font-size: 1.1rem;
         padding: 1vh;
-        margin: 1vh;
+        margin: auto;
         background-color: #2D2E2E;
         color: var(--texto);
         transition-duration: 0.25s;

@@ -7,7 +7,7 @@ require_once '../control/autcontrol.php';
 $erros3 = array();
 
 
-if (isset($_POST['votar'])) {
+if (isset($_POST['votarg'])) {
     $nomegenero = $_POST['nomegenero'];
     $id = $_SESSION['id'];
 

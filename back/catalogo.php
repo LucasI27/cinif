@@ -35,61 +35,71 @@ if (!isset($_SESSION['id'])) {
 <body>
     <div class="flex">
 
-    <table class="header">
-        <tr>
-            <td style="width: 10vh;"><a href="votef.php"><img src="../img/logo2.png" alt="logo" class="logo"></a></td>
-            <td class="titl"><p class="titulo">CinIF</p>
-            <?php if ($_SESSION["id"] == 1): ?>
-                <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
-            <?php endif; ?>
-            </td>
-                <table class="align">
-                    <tr class="navbg">
-                        <td><a href="../back/voteg.php"><button class="navop">Gêneros</button></td>
-                        <td><a href="../back/votef.php"><button class="navop">Filmes</button></td>
-                        <td><a href="../back/catalogo.php"><button class="navops">Catálogo</button>
+    <div class="header">
+            <a href="votef.php">
+                <img src="../img/logo2.png" alt="logo" class="logo">
+            </a>
+            <div class="titl"><p class="titulo">CinIF</p>
+                <?php if ($_SESSION["id"] == 1): ?>
+                    <a href="adm.php"><img src="../img/gear.png" class="gear" alt="adm config"></a>
+                <?php endif; ?>
+            </div>
+    </div>
+
+    <div class="side">
+
+        <table class="align">
+            <tr class="navbg">
+                
+                <td><a href="../back/voteg.php"><button class="navop">Gêneros</button></td>
+                
+                <td><a href="../back/votef.php"><button class="navop">Filmes</button></td>
+                
+                <td>
+                    <a href="../back/catalogo.php">
+                        <button class="navops">Catálogo
                             <div class="seta"></div>
-                        </td>
-                    </tr>
-                </table>
+                        </button>
+                    </a>
+                </td>
             </tr>
         </table>
-    <div class="balao">
-        <p class="balaot">Aqui você pode conferir todos os filmes disponíveis no nosso catálogo, você pode adicionar seus preferidos!</p>
-    </div>
+
+        <div class="balao">
+            <p class="balaot">Bem vindo ao catálogo, aqui você pode conferir todos os filmes, clique no botão abaixo para adicionar os que você quiser</p>
+        </div>
 
 
 
 
         <div class="descd">
-            <a href="add.php"><button class="envb">+ Adicionar filme</button></a>
+            <a href="add.php"><button class="envb" style="width: 90%;">+ Adicionar filme</button></a>
         </div>
 
         <div class="descm">
-            <a href="add.php"><button class="envb">+ Adicionar filme</button></a>
+            <a href="add.php"><button class="envb" style="width: 98%;">+ Adicionar filme</button></a>
         </div>
+
+    </div>
 
 
 
             <?php
-                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 ORDER BY titulo;";
+                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 ORDER BY id ;";
                 $result = mysqli_query($conexao, $sql);
-                if (!$conexao->query($sql)) {
-                    echo $erros2['bd'] = mysqli_error($conexao);
-                } 
                 $resultnum = mysqli_num_rows($result);
                 $row = mysqli_fetch_assoc($result);
             ?>
 
 
 
-            <?php if ($resultnum > 1): ?>
+            <?php if ($resultnum >= 1): ?>
                 
-                <div class="contcard">
+                
+                <?php while ($row = mysqli_fetch_assoc($result)):?>
                     
-                    <?php while ($row = mysqli_fetch_assoc($result)):?>
-                    
-                        <form method="POST" action="catalogo.php" class="card card-1">
+                    <div class="contcard">
+                        <form method="POST" action="catalogo.php" class="card">
                             <table class="bord">
                                 <tr>
                                     <td class="flx">
@@ -130,14 +140,14 @@ if (!isset($_SESSION['id'])) {
                             </table>
                         </form>
 
+                    </div>
                     <?php endwhile; ?>
-                </div>
                 
             <?php else:?>
 
                 <div class="nof">
                     <img src="../img/inf.png" class="noimg" alt="">
-                    <p>Não há filmes o suficiente no catálogo para acontecer uma votação, vá na aba "Catálogo" para adicionar os filmes de sua preferência.</p>
+                    <p>Não há filmes no Catálogo, clique no botão ao lado para adicionar os de sua preferencia</p>
                 </div>
 
             <?php endif;?>

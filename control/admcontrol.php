@@ -33,7 +33,7 @@ if(isset($_POST["catalogo"]) && !empty($_FILES["img"]["name"])){
     }
     
     if (empty($sinopse)){
-        $sinopse = 'não foi fornecido';
+        $erros3['sinopse'] = 'Adicione uma sinopse para os usuários terem mais informações sobre o filme';
     }
 
     $tituloQuerry = 'SELECT * FROM catal WHERE valid=1 AND titulo=? LIMIT 1';
@@ -91,6 +91,7 @@ if(isset($_POST["catalogo"]) && !empty($_FILES["img"]["name"])){
     }
 }
 
+
 if (isset($_POST['catalogo']) && empty($_FILES["img"]["name"])){
     $erros3['vazio'] = 'Insira uma imagem para diferenciar o filme de títulos semelhantes ;)';
 }
@@ -105,7 +106,7 @@ if (isset($_POST['apagar'])) {
     if (!$conexao->query($sql)) {
         $erros3['bd'] = mysqli_error($conexao);
     }else{
-        $sucesso = 'Filme adicionado com sucesso';
+        $sucesso = 'Filme apagado com sucesso';
     }
 }
 
@@ -142,7 +143,7 @@ if (isset($_POST['voteini'])) {
     
         
         
-        $mens = $_POST['mens'];
+        $mens = $conexao->real_escape_string($_POST['mens']);
         $sql = "UPDATE users SET numvg = 1, numvf = 1;";
         $stmt = $conexao->prepare($sql);
         if (!$conexao->query($sql)) {
@@ -228,7 +229,7 @@ if (isset($_POST['voteter'])) {
         } 
     
         $mens = $row['mens'];
-        $mens .= " As votações já terminaram, o filme exibido será $nomevencedorf";
+        $mens .= $conexao->real_escape_string("As votações já terminaram, o filme exibido será <span class='titsin'>$nomevencedorf</span>");
     
         $sql = "UPDATE controle SET mens='$mens'";
         $stmt1 = $conexao->prepare($sql);
