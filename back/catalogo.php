@@ -85,7 +85,8 @@ if (!isset($_SESSION['id'])) {
 
 
             <?php
-                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 ORDER BY id ;";
+                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 
+                ORDER BY id ;";
                 $result = mysqli_query($conexao, $sql);
                 $resultnum = mysqli_num_rows($result);
                 $row = mysqli_fetch_assoc($result);

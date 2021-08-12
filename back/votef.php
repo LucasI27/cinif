@@ -93,7 +93,8 @@ if (!isset($_SESSION['id'])) {
             $venc = mysqli_fetch_assoc($result);
             if ($venc['vencedorg'] !=='') {
                 $genero = $venc['vencedorg'];
-                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 AND genero='$genero' ORDER BY numvotosf DESC, id LIMIT 7;";
+                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 AND genero='$genero'
+                ORDER BY numvotosf DESC, id LIMIT 7;";
                 $result = mysqli_query($conexao, $sql);
                 if (!$conexao->query($sql)) {
                     echo $erros2['bd'] = mysqli_error($conexao);
@@ -101,7 +102,8 @@ if (!isset($_SESSION['id'])) {
                 $resultnum = mysqli_num_rows($result);
                 $row = mysqli_fetch_assoc($result);
             }else{
-                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 ORDER BY numvotosf DESC, RAND() LIMIT 7;";
+                $sql = "SELECT * FROM catal WHERE valid=1 AND exib=0 
+                ORDER BY numvotosf DESC, RAND() LIMIT 7;";
                 $result = mysqli_query($conexao, $sql);
                 if (!$conexao->query($sql)) {
                     echo $erros2['bd'] = mysqli_error($conexao);

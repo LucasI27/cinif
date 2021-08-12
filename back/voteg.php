@@ -101,14 +101,12 @@ foreach ($erros3 as $erros3){
         <?php if ($controle['voteg'] == 1):?>
 
             <?php
-            $sql = "SELECT * FROM genero WHERE numgenero>2 ORDER BY numvotosg DESC;";
+            $sql = "SELECT * FROM genero WHERE numgenero>2 
+            ORDER BY numvotosg DESC;";
             $result = mysqli_query($conexao, $sql);
             $resultnum = mysqli_num_rows($result);
             $row = mysqli_fetch_assoc($result);
             ?>
-
-
-
             <?php if ($resultnum > 1): ?>
                 
             <div class="contcard">
@@ -129,7 +127,7 @@ foreach ($erros3 as $erros3){
                         </button>            
                     <?php endif; ?>
 
-
+                    <input type="hidden" name="nomegenero" value="<?php echo $row['nomegenero'];?>">
                     <p class="numv"><?php echo $row['numvotosg']; ?></p>
                     <p class="cardt"><?php echo $row['nomegenero'] ?></p>
                 </form>
